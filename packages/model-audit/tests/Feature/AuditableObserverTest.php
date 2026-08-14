@@ -230,6 +230,7 @@ class AuditableObserverTest extends TestCase
         $this->assertNull($entry->actor_id);
         $this->assertNull($entry->actor);
     }
+
     public function test_it_records_the_request_context(): void
     {
         $request = Request::create(

@@ -36,7 +36,7 @@ trait Auditable
 
     public function auditInclude(): array
     {
-        if(!property_exists($this, 'auditInclude')) {
+        if (!property_exists($this, 'auditInclude')) {
             return [];
         }
 
@@ -45,7 +45,7 @@ trait Auditable
 
     public function auditExclude(): array
     {
-        if(!property_exists($this, 'auditExclude')) {
+        if (!property_exists($this, 'auditExclude')) {
             return [];
         }
 
@@ -54,7 +54,7 @@ trait Auditable
 
     public function auditMasks(): array
     {
-        if(!property_exists($this, 'auditMasks')) {
+        if (!property_exists($this, 'auditMasks')) {
             return [];
         }
 

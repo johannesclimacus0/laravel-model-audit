@@ -1,4 +1,5 @@
 <?php
+
 namespace Local\ModelAudit\Tests\Unit;
 
 use Carbon\CarbonImmutable;

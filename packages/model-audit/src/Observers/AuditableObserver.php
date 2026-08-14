@@ -3,21 +3,15 @@
 namespace Local\ModelAudit\Observers;
 
 use Illuminate\Database\Eloquent\Model;
-use Local\ModelAudit\Contracts\ActorResolver;
 use Local\ModelAudit\Contracts\AuditAttributeFilter;
+use Local\ModelAudit\Contracts\AuditLogger;
 use Local\ModelAudit\Contracts\AuditRecorder;
 use Local\ModelAudit\Contracts\AuditValueMasker;
-use Local\ModelAudit\DTO\AuditEntryData;
 use Local\ModelAudit\Enums\ModelEvent;
-use Local\ModelAudit\Contracts\IpAddressResolver;
-use Local\ModelAudit\Contracts\RequestIdResolver;
-use Local\ModelAudit\Contracts\UserAgentResolver;
-use Local\ModelAudit\Contracts\AuditLogger;
 
 class AuditableObserver
 {
     public function __construct(
-        private AuditRecorder $recorder,
         private AuditAttributeFilter $filter,
         private AuditValueMasker $mask,
         private AuditLogger $logger,

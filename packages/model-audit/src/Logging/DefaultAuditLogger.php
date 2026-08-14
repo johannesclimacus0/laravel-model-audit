@@ -21,9 +21,7 @@ class DefaultAuditLogger implements AuditLogger
         private IpAddressResolver $ipAddressResolver,
         private UserAgentResolver $userAgentResolver,
         private RequestIdResolver $requestIdResolver,
-    )
-    {
-    }
+    ) {}
 
     public function record(
         Model $subject,
@@ -31,7 +29,7 @@ class DefaultAuditLogger implements AuditLogger
         array $metadata = [],
         ?array $oldValues = null,
         ?array $newValues = null,
-    ): ?AuditEntry{
+    ): ?AuditEntry {
         $data = new AuditEntryData(
             subject: $subject,
             event: $event,

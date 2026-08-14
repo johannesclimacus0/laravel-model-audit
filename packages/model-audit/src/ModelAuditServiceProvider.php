@@ -5,20 +5,20 @@ namespace Local\ModelAudit;
 use Illuminate\Support\ServiceProvider;
 use Local\ModelAudit\Contracts\ActorResolver;
 use Local\ModelAudit\Contracts\AuditAttributeFilter;
+use Local\ModelAudit\Contracts\AuditLogger;
 use Local\ModelAudit\Contracts\AuditRecorder;
 use Local\ModelAudit\Contracts\AuditValueMasker;
 use Local\ModelAudit\Contracts\IpAddressResolver;
 use Local\ModelAudit\Contracts\RequestIdResolver;
 use Local\ModelAudit\Contracts\UserAgentResolver;
 use Local\ModelAudit\Filtering\DefaultAuditAttributeFilter;
+use Local\ModelAudit\Logging\DefaultAuditLogger;
 use Local\ModelAudit\Masking\DefaultAuditValueMasker;
 use Local\ModelAudit\Recorders\DatabaseAuditRecorder;
 use Local\ModelAudit\Resolvers\AuthenticatedActorResolver;
 use Local\ModelAudit\Resolvers\RequestIpAddressResolver;
 use Local\ModelAudit\Resolvers\RequestUserAgentResolver;
 use Local\ModelAudit\Resolvers\UuidRequestIdResolver;
-use Local\ModelAudit\Contracts\AuditLogger;
-use Local\ModelAudit\Logging\DefaultAuditLogger;
 
 class ModelAuditServiceProvider extends ServiceProvider
 {

@@ -7,9 +7,7 @@ use Local\ModelAudit\Contracts\UserAgentResolver;
 
 class RequestUserAgentResolver implements UserAgentResolver
 {
-    public function __construct(private Request $request)
-    {
-    }
+    public function __construct(private Request $request) {}
 
     public function resolve(): ?string
     {
