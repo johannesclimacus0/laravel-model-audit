@@ -36,16 +36,28 @@ trait Auditable
 
     public function auditInclude(): array
     {
-        return [];
+        if(!property_exists($this, 'auditInclude')) {
+            return [];
+        }
+
+        return $this->auditInclude;
     }
 
     public function auditExclude(): array
     {
-        return [];
+        if(!property_exists($this, 'auditExclude')) {
+            return [];
+        }
+
+        return $this->auditExclude;
     }
 
     public function auditMasks(): array
     {
-        return [];
+        if(!property_exists($this, 'auditMasks')) {
+            return [];
+        }
+
+        return $this->auditMasks;
     }
 }

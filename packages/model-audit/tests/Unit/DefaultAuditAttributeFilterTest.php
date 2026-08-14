@@ -96,6 +96,32 @@ class DefaultAuditAttributeFilterTest extends TestCase
         $this->assertSame(['name' => 'Test name'], $result);
     }
 
+    public function test_it_reads_included_fields_from_model_property(): void
+    {
+        $model = new class extends TestModel {
+            protected array $auditInclude = ['status'];
+        };
+
+        $result = $this->filter->filter($model, $this->values());
+
+        $this->assertSame(['status' => 'pending'], $result);
+    }
+
+    public function test_it_reads_excluded_fields_from_model_property(): void
+    {
+        $model = new class extends TestModel {
+            protected array $auditExclude = ['internal_note'];
+        };
+
+        $result = $this->filter->filter($model, $this->values(),);
+
+        $this->assertSame([
+            'name' => 'Test invoice',
+            'status' => 'pending',
+            'amount' => 1200
+        ], $result);
+    }
+
     private function values(): array
     {
         return [

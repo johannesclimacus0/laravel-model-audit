@@ -175,4 +175,21 @@ class DefaultAuditValueMaskerTest extends TestCase
 
         $this->masker->mask($code, ['code' => '1234']);
     }
+
+    public function test_it_reads_masking_rules_from_model_property(): void
+    {
+        $model = new class extends TestModel {
+            protected array $auditMasks = ['email' => 'email'];
+        };
+
+        $result = $this->masker->mask($model, [
+            'email' => 'test@example.org',
+            'status' => 'active',
+        ]);
+
+        $this->assertSame([
+            'email' => 'te***@example.org',
+            'status' => 'active',
+        ], $result);
+    }
 }
