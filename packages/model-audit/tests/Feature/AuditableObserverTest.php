@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Local\ModelAudit\Models\AuditEntry;
 use Local\ModelAudit\Tests\Support\ExcludedFieldsModel;
 use Local\ModelAudit\Tests\Support\MaskedModel;
+use Local\ModelAudit\Tests\Support\SoftDeletedModel;
 use Local\ModelAudit\Tests\Support\TestModel;
 use Local\ModelAudit\Tests\TestCase;
 
@@ -151,5 +152,31 @@ class AuditableObserverTest extends TestCase
 
         $this->assertSame(['name' => '********', 'status' => 'pending'], $entry->old_values);
         $this->assertNull($entry->new_values);
+    }
+
+    public function test_it_records_a_restored_model(): void
+    {
+        $model = SoftDeletedModel::query()->create([
+            'name' => 'Test invoice',
+            'status' => 'pending',
+        ]);
+        $id = $model->getKey();
+
+        $model->delete();
+
+        $this->assertNull(SoftDeletedModel::query()->find($id));
+        $this->assertNotNull(SoftDeletedModel::withTrashed()->find($id));
+
+        $model->restore();
+
+        $entry = AuditEntry::query()
+            ->where('event', 'restored')
+            ->sole();
+
+        $this->assertSame('Test invoice', $entry->new_values['name']);
+        $this->assertSame('pending', $entry->new_values['status']);
+        $this->assertArrayNotHasKey('deleted_at', $entry->new_values);
+        $this->assertNull($entry->old_values);
+        $this->assertNotNull(SoftDeletedModel::query()->find($id));
     }
 }

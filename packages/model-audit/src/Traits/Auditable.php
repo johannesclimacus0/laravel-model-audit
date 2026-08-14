@@ -21,6 +21,12 @@ trait Auditable
         static::deleted(function ($model): void {
             app(AuditableObserver::class)->deleted($model);
         });
+
+        if(method_exists(static::class, 'restored')){
+            static::restored(function ($model): void {
+                app(AuditableObserver::class)->restored($model);
+            });
+        }
     }
 
     public function audits(): MorphMany

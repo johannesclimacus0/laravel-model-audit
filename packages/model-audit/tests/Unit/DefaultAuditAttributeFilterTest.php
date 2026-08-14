@@ -3,6 +3,7 @@
 namespace Local\ModelAudit\Tests\Unit;
 
 use Local\ModelAudit\Filtering\DefaultAuditAttributeFilter;
+use Local\ModelAudit\Tests\Support\SoftDeletedModel;
 use Local\ModelAudit\Tests\Support\TestModel;
 use Local\ModelAudit\Tests\TestCase;
 
@@ -82,6 +83,17 @@ class DefaultAuditAttributeFilterTest extends TestCase
         $this->assertSame('pending', $result['status']);
         $this->assertArrayNotHasKey('amount', $result);
         $this->assertArrayNotHasKey('internal_note', $result);
+    }
+
+    public function test_it_excludes_soft_deleted_field_by_default(): void
+    {
+        $model = new SoftDeletedModel();
+
+        $values = ['name' => 'Test name', 'deleted_at' => now()];
+
+        $result = $this->filter->filter($model, $values);
+
+        $this->assertSame(['name' => 'Test name'], $result);
     }
 
     private function values(): array

@@ -12,10 +12,12 @@ use Local\ModelAudit\Enums\ModelEvent;
 class AuditableObserver
 {
     public function __construct(
-        private AuditRecorder $recorder,
+        private AuditRecorder        $recorder,
         private AuditAttributeFilter $filter,
-        private AuditValueMasker $mask,
-    ) {}
+        private AuditValueMasker     $mask,
+    )
+    {
+    }
 
     public function created(Model $model): void
     {
@@ -66,6 +68,22 @@ class AuditableObserver
                 event: ModelEvent::Deleted,
                 oldValues: $oldValues,
                 newValues: null
+            )
+        );
+    }
+
+    public function restored(Model $model): void
+    {
+        $newValues = $this->filter->filter($model, $model->getAttributes());
+
+        $newValues = $this->mask->mask($model, $newValues);
+
+        $this->recorder->record(
+            new AuditEntryData(
+                subject: $model,
+                event: ModelEvent::Restored,
+                oldValues: null,
+                newValues: $newValues
             )
         );
     }
