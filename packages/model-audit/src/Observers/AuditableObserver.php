@@ -3,6 +3,7 @@
 namespace Local\ModelAudit\Observers;
 
 use Illuminate\Database\Eloquent\Model;
+use Local\ModelAudit\Contracts\ActorResolver;
 use Local\ModelAudit\Contracts\AuditAttributeFilter;
 use Local\ModelAudit\Contracts\AuditRecorder;
 use Local\ModelAudit\Contracts\AuditValueMasker;
@@ -12,12 +13,11 @@ use Local\ModelAudit\Enums\ModelEvent;
 class AuditableObserver
 {
     public function __construct(
-        private AuditRecorder        $recorder,
+        private AuditRecorder $recorder,
         private AuditAttributeFilter $filter,
-        private AuditValueMasker     $mask,
-    )
-    {
-    }
+        private AuditValueMasker $mask,
+        private ActorResolver $actorResolver,
+    ) {}
 
     public function created(Model $model): void
     {
@@ -28,6 +28,7 @@ class AuditableObserver
             new AuditEntryData(
                 subject: $model,
                 event: ModelEvent::Created,
+                actor: $this->actorResolver->resolve(),
                 newValues: $newValues,
             )
         );
@@ -51,6 +52,7 @@ class AuditableObserver
             new AuditEntryData(
                 subject: $model,
                 event: ModelEvent::Updated,
+                actor: $this->actorResolver->resolve(),
                 oldValues: $oldValues,
                 newValues: $newValues,
             )
@@ -66,6 +68,7 @@ class AuditableObserver
             new AuditEntryData(
                 subject: $model,
                 event: ModelEvent::Deleted,
+                actor: $this->actorResolver->resolve(),
                 oldValues: $oldValues,
                 newValues: null
             )
@@ -82,6 +85,7 @@ class AuditableObserver
             new AuditEntryData(
                 subject: $model,
                 event: ModelEvent::Restored,
+                actor: $this->actorResolver->resolve(),
                 oldValues: null,
                 newValues: $newValues
             )

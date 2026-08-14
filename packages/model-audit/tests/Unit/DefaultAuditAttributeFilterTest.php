@@ -87,7 +87,7 @@ class DefaultAuditAttributeFilterTest extends TestCase
 
     public function test_it_excludes_soft_deleted_field_by_default(): void
     {
-        $model = new SoftDeletedModel();
+        $model = new SoftDeletedModel;
 
         $values = ['name' => 'Test name', 'deleted_at' => now()];
 

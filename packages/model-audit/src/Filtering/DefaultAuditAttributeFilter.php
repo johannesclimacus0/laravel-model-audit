@@ -22,8 +22,7 @@ class DefaultAuditAttributeFilter implements AuditAttributeFilter
             $model->getUpdatedAtColumn(),
         ];
 
-
-        if(method_exists($model, 'getDeletedAtColumn')) {
+        if (method_exists($model, 'getDeletedAtColumn')) {
             $exclude[] = $model->getDeletedAtColumn();
         }
 

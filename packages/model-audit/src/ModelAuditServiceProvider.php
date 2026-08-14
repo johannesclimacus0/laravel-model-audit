@@ -3,12 +3,14 @@
 namespace Local\ModelAudit;
 
 use Illuminate\Support\ServiceProvider;
+use Local\ModelAudit\Contracts\ActorResolver;
 use Local\ModelAudit\Contracts\AuditAttributeFilter;
 use Local\ModelAudit\Contracts\AuditRecorder;
 use Local\ModelAudit\Contracts\AuditValueMasker;
 use Local\ModelAudit\Filtering\DefaultAuditAttributeFilter;
 use Local\ModelAudit\Masking\DefaultAuditValueMasker;
 use Local\ModelAudit\Recorders\DatabaseAuditRecorder;
+use Local\ModelAudit\Resolvers\AuthenticatedActorResolver;
 
 class ModelAuditServiceProvider extends ServiceProvider
 {
@@ -21,6 +23,8 @@ class ModelAuditServiceProvider extends ServiceProvider
         $this->app->singleton(AuditAttributeFilter::class, DefaultAuditAttributeFilter::class);
 
         $this->app->singleton(AuditValueMasker::class, DefaultAuditValueMasker::class);
+
+        $this->app->singleton(ActorResolver::class, AuthenticatedActorResolver::class);
     }
 
     public function boot(): void

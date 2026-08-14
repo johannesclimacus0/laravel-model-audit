@@ -8,6 +8,7 @@ use Local\ModelAudit\Tests\Support\ExcludedFieldsModel;
 use Local\ModelAudit\Tests\Support\MaskedModel;
 use Local\ModelAudit\Tests\Support\SoftDeletedModel;
 use Local\ModelAudit\Tests\Support\TestModel;
+use Local\ModelAudit\Tests\Support\TestUser;
 use Local\ModelAudit\Tests\TestCase;
 
 class AuditableObserverTest extends TestCase
@@ -178,5 +179,53 @@ class AuditableObserverTest extends TestCase
         $this->assertArrayNotHasKey('deleted_at', $entry->new_values);
         $this->assertNull($entry->old_values);
         $this->assertNotNull(SoftDeletedModel::query()->find($id));
+    }
+
+    public function test_it_records_the_authenticated_actor(): void
+    {
+        $actor = TestUser::query()->create([
+            'name' => 'Test Name',
+            'status' => 'active',
+        ]);
+
+        $this->actingAs($actor);
+
+        $subject = TestModel::query()->create([
+            'name' => 'Test invoice',
+            'status' => 'pending',
+        ]);
+
+        $entry = AuditEntry::query()
+            ->where('subject_id', (string) $subject->getKey())
+            ->sole();
+
+        $this->assertSame(
+            $actor->getMorphClass(),
+            $entry->actor_type,
+        );
+
+        $this->assertSame(
+            (string) $actor->getKey(),
+            $entry->actor_id,
+        );
+
+        $this->assertTrue($entry->actor->is($actor));
+    }
+
+    public function test_it_records_no_actor_when_the_user_is_not_authenticated(): void
+    {
+        $subject = TestModel::query()->create([
+            'name' => 'Test invoice',
+            'status' => 'pending',
+        ]);
+
+        $entry = AuditEntry::query()
+            ->where('event', 'created')
+            ->where('subject_id', (string) $subject->getKey())
+            ->sole();
+
+        $this->assertNull($entry->actor_type);
+        $this->assertNull($entry->actor_id);
+        $this->assertNull($entry->actor);
     }
 }
