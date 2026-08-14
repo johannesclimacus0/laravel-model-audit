@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Local\ModelAudit\Tests\Unit;
 
 use Carbon\CarbonImmutable;

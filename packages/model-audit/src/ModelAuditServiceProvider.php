@@ -7,10 +7,16 @@ use Local\ModelAudit\Contracts\ActorResolver;
 use Local\ModelAudit\Contracts\AuditAttributeFilter;
 use Local\ModelAudit\Contracts\AuditRecorder;
 use Local\ModelAudit\Contracts\AuditValueMasker;
+use Local\ModelAudit\Contracts\IpAddressResolver;
+use Local\ModelAudit\Contracts\RequestIdResolver;
+use Local\ModelAudit\Contracts\UserAgentResolver;
 use Local\ModelAudit\Filtering\DefaultAuditAttributeFilter;
 use Local\ModelAudit\Masking\DefaultAuditValueMasker;
 use Local\ModelAudit\Recorders\DatabaseAuditRecorder;
 use Local\ModelAudit\Resolvers\AuthenticatedActorResolver;
+use Local\ModelAudit\Resolvers\RequestIpAddressResolver;
+use Local\ModelAudit\Resolvers\RequestUserAgentResolver;
+use Local\ModelAudit\Resolvers\UuidRequestIdResolver;
 
 class ModelAuditServiceProvider extends ServiceProvider
 {
@@ -25,6 +31,12 @@ class ModelAuditServiceProvider extends ServiceProvider
         $this->app->singleton(AuditValueMasker::class, DefaultAuditValueMasker::class);
 
         $this->app->singleton(ActorResolver::class, AuthenticatedActorResolver::class);
+
+        $this->app->scoped(IpAddressResolver::class, RequestIpAddressResolver::class);
+
+        $this->app->scoped(UserAgentResolver::class, RequestUserAgentResolver::class);
+
+        $this->app->scoped(RequestIdResolver::class, UuidRequestIdResolver::class);
     }
 
     public function boot(): void

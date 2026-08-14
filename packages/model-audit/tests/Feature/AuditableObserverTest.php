@@ -3,6 +3,8 @@
 namespace Local\ModelAudit\Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Local\ModelAudit\Models\AuditEntry;
 use Local\ModelAudit\Tests\Support\ExcludedFieldsModel;
 use Local\ModelAudit\Tests\Support\MaskedModel;
@@ -227,5 +229,38 @@ class AuditableObserverTest extends TestCase
         $this->assertNull($entry->actor_type);
         $this->assertNull($entry->actor_id);
         $this->assertNull($entry->actor);
+    }
+    public function test_it_records_the_request_context(): void
+    {
+        $request = Request::create(
+            '/',
+            'POST',
+            server: [
+                'REMOTE_ADDR' => '203.0.113.10',
+                'HTTP_USER_AGENT' => 'Chrome',
+            ],
+        );
+        $this->app->instance('request', $request);
+
+        $model = TestModel::query()->create([
+            'name' => 'Test invoice',
+            'status' => 'pending',
+        ]);
+
+        $createdEntry = AuditEntry::query()
+            ->where('event', 'created')
+            ->sole();
+
+        $this->assertSame('203.0.113.10', $createdEntry->ip_address);
+        $this->assertSame('Chrome', $createdEntry->user_agent);
+        $this->assertTrue(Str::isUuid($createdEntry->request_id));
+
+        $model->status = 'approved';
+        $model->save();
+
+        $updatedEntry = AuditEntry::query()
+            ->where('event', 'updated')
+            ->sole();
+        $this->assertSame($createdEntry->request_id, $updatedEntry->request_id);
     }
 }

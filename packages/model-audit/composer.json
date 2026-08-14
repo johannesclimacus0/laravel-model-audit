@@ -6,7 +6,8 @@
     "require": {
         "php": "^8.3",
         "illuminate/database": "^13.0",
-        "illuminate/support": "^13.0"
+        "illuminate/support": "^13.0",
+        "illuminate/http": "^13.0"
     },
     "require-dev": {
         "orchestra/testbench": "^11.0",

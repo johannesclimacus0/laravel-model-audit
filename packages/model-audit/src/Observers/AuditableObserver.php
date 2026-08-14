@@ -9,6 +9,9 @@ use Local\ModelAudit\Contracts\AuditRecorder;
 use Local\ModelAudit\Contracts\AuditValueMasker;
 use Local\ModelAudit\DTO\AuditEntryData;
 use Local\ModelAudit\Enums\ModelEvent;
+use Local\ModelAudit\Contracts\IpAddressResolver;
+use Local\ModelAudit\Contracts\RequestIdResolver;
+use Local\ModelAudit\Contracts\UserAgentResolver;
 
 class AuditableObserver
 {
@@ -17,6 +20,9 @@ class AuditableObserver
         private AuditAttributeFilter $filter,
         private AuditValueMasker $mask,
         private ActorResolver $actorResolver,
+        private IpAddressResolver $ipAddressResolver,
+        private UserAgentResolver $userAgentResolver,
+        private RequestIdResolver $requestIdResolver,
     ) {}
 
     public function created(Model $model): void
@@ -30,6 +36,9 @@ class AuditableObserver
                 event: ModelEvent::Created,
                 actor: $this->actorResolver->resolve(),
                 newValues: $newValues,
+                ipAddress: $this->ipAddressResolver->resolve(),
+                userAgent: $this->userAgentResolver->resolve(),
+                requestId: $this->requestIdResolver->resolve(),
             )
         );
     }
@@ -55,6 +64,9 @@ class AuditableObserver
                 actor: $this->actorResolver->resolve(),
                 oldValues: $oldValues,
                 newValues: $newValues,
+                ipAddress: $this->ipAddressResolver->resolve(),
+                userAgent: $this->userAgentResolver->resolve(),
+                requestId: $this->requestIdResolver->resolve(),
             )
         );
     }
@@ -70,7 +82,10 @@ class AuditableObserver
                 event: ModelEvent::Deleted,
                 actor: $this->actorResolver->resolve(),
                 oldValues: $oldValues,
-                newValues: null
+                newValues: null,
+                ipAddress: $this->ipAddressResolver->resolve(),
+                userAgent: $this->userAgentResolver->resolve(),
+                requestId: $this->requestIdResolver->resolve(),
             )
         );
     }
@@ -87,7 +102,10 @@ class AuditableObserver
                 event: ModelEvent::Restored,
                 actor: $this->actorResolver->resolve(),
                 oldValues: null,
-                newValues: $newValues
+                newValues: $newValues,
+                ipAddress: $this->ipAddressResolver->resolve(),
+                userAgent: $this->userAgentResolver->resolve(),
+                requestId: $this->requestIdResolver->resolve(),
             )
         );
     }
