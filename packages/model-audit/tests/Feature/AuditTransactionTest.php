@@ -27,11 +27,19 @@ class AuditTransactionTest extends TestCase
             'subject_type' => $model->getMorphClass(),
             'subject_id' => (string) $id,
         ]);
+        $this->assertDatabaseHas('audit_chain_states', [
+            'subject_type' => $model->getMorphClass(),
+            'subject_id' => (string) $id,
+        ]);
 
         DB::rollBack();
 
         $this->assertDatabaseMissing('test_models', ['id' => $id]);
         $this->assertDatabaseMissing('audit_entries', [
+            'subject_type' => $model->getMorphClass(),
+            'subject_id' => (string) $id,
+        ]);
+        $this->assertDatabaseMissing('audit_chain_states', [
             'subject_type' => $model->getMorphClass(),
             'subject_id' => (string) $id,
         ]);

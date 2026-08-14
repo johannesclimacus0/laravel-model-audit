@@ -2,18 +2,78 @@
 
 namespace Local\ModelAudit\Tests\Feature;
 
+use Local\ModelAudit\Canonicalization\JsonAuditCanonicalizer;
+use Local\ModelAudit\Chains\DatabaseAuditChainWriter;
 use Local\ModelAudit\Contracts\ActorResolver;
+use Local\ModelAudit\Contracts\AuditCanonicalizer;
+use Local\ModelAudit\Contracts\AuditChainWriter;
+use Local\ModelAudit\Contracts\AuditChainVerifier;
+use Local\ModelAudit\Contracts\AuditHasher;
+use Local\ModelAudit\Contracts\AuditHashGenerator;
+use Local\ModelAudit\Contracts\AuditPayloadBuilder;
 use Local\ModelAudit\Contracts\IpAddressResolver;
 use Local\ModelAudit\Contracts\RequestIdResolver;
 use Local\ModelAudit\Contracts\UserAgentResolver;
+use Local\ModelAudit\Hashing\Sha256AuditHasher;
+use Local\ModelAudit\Hashing\DefaultAuditHashGenerator;
+use Local\ModelAudit\Payloads\DefaultAuditPayloadBuilder;
 use Local\ModelAudit\Resolvers\AuthenticatedActorResolver;
 use Local\ModelAudit\Resolvers\RequestIpAddressResolver;
 use Local\ModelAudit\Resolvers\RequestUserAgentResolver;
 use Local\ModelAudit\Resolvers\UuidRequestIdResolver;
 use Local\ModelAudit\Tests\TestCase;
+use Local\ModelAudit\Verification\DatabaseAuditChainVerifier;
 
 class ModelAuditServiceProviderTest extends TestCase
 {
+    public function test_it_registers_the_database_audit_chain_writer(): void
+    {
+        $writer = $this->app->make(AuditChainWriter::class);
+
+        $this->assertInstanceOf(DatabaseAuditChainWriter::class, $writer);
+        $this->assertSame($writer, $this->app->make(AuditChainWriter::class));
+    }
+
+    public function test_it_registers_the_database_audit_chain_verifier(): void
+    {
+        $verifier = $this->app->make(AuditChainVerifier::class);
+
+        $this->assertInstanceOf(DatabaseAuditChainVerifier::class, $verifier);
+        $this->assertSame($verifier, $this->app->make(AuditChainVerifier::class));
+    }
+
+    public function test_it_registers_the_default_audit_canonicalizer(): void
+    {
+        $canonicalizer = $this->app->make(AuditCanonicalizer::class);
+
+        $this->assertInstanceOf(JsonAuditCanonicalizer::class, $canonicalizer);
+        $this->assertSame($canonicalizer, $this->app->make(AuditCanonicalizer::class));
+    }
+
+    public function test_it_registers_the_default_audit_hasher(): void
+    {
+        $hasher = $this->app->make(AuditHasher::class);
+
+        $this->assertInstanceOf(Sha256AuditHasher::class, $hasher);
+        $this->assertSame($hasher, $this->app->make(AuditHasher::class));
+    }
+
+    public function test_it_registers_the_default_audit_hash_generator(): void
+    {
+        $generator = $this->app->make(AuditHashGenerator::class);
+
+        $this->assertInstanceOf(DefaultAuditHashGenerator::class, $generator);
+        $this->assertSame($generator, $this->app->make(AuditHashGenerator::class));
+    }
+
+    public function test_it_registers_the_default_audit_payload_builder(): void
+    {
+        $builder = $this->app->make(AuditPayloadBuilder::class);
+
+        $this->assertInstanceOf(DefaultAuditPayloadBuilder::class, $builder);
+        $this->assertSame($builder, $this->app->make(AuditPayloadBuilder::class));
+    }
+
     public function test_it_registers_the_default_actor_resolver(): void
     {
         $resolver = $this->app->make(ActorResolver::class);

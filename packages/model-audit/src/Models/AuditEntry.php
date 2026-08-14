@@ -21,6 +21,8 @@ use Local\ModelAudit\Exceptions\AuditEntryIsImmutable;
     'ip_address',
     'user_agent',
     'request_id',
+    'previous_hash',
+    'hash',
     'created_at',
 ])]
 #[DateFormat('Y-m-d H:i:s.u')]
