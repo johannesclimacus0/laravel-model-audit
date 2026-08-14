@@ -17,6 +17,8 @@ use Local\ModelAudit\Resolvers\AuthenticatedActorResolver;
 use Local\ModelAudit\Resolvers\RequestIpAddressResolver;
 use Local\ModelAudit\Resolvers\RequestUserAgentResolver;
 use Local\ModelAudit\Resolvers\UuidRequestIdResolver;
+use Local\ModelAudit\Contracts\AuditLogger;
+use Local\ModelAudit\Logging\DefaultAuditLogger;
 
 class ModelAuditServiceProvider extends ServiceProvider
 {
@@ -37,6 +39,7 @@ class ModelAuditServiceProvider extends ServiceProvider
         $this->app->scoped(UserAgentResolver::class, RequestUserAgentResolver::class);
 
         $this->app->scoped(RequestIdResolver::class, UuidRequestIdResolver::class);
+        $this->app->scoped(AuditLogger::class, DefaultAuditLogger::class);
     }
 
     public function boot(): void
