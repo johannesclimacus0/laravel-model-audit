@@ -37,9 +37,15 @@ class DefaultAuditLogger implements AuditLogger
             oldValues: $oldValues,
             newValues: $newValues,
             metadata: $metadata,
-            ipAddress: $this->ipAddressResolver->resolve(),
-            userAgent: $this->userAgentResolver->resolve(),
-            requestId: $this->requestIdResolver->resolve(),
+            ipAddress: config('model-audit.context.ip_address', true)
+                ? $this->ipAddressResolver->resolve()
+                : null,
+            userAgent: config('model-audit.context.user_agent', true)
+                ? $this->userAgentResolver->resolve()
+                : null,
+            requestId: config('model-audit.context.request_id', true)
+                ? $this->requestIdResolver->resolve()
+                : null,
         );
 
         return $this->recorder->record($data);
