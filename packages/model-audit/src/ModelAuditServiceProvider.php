@@ -5,6 +5,7 @@ namespace Local\ModelAudit;
 use Illuminate\Support\ServiceProvider;
 use Local\ModelAudit\Canonicalization\JsonAuditCanonicalizer;
 use Local\ModelAudit\Chains\DatabaseAuditChainWriter;
+use Local\ModelAudit\Console\VerifyAuditChainCommand;
 use Local\ModelAudit\Contracts\ActorResolver;
 use Local\ModelAudit\Contracts\AuditAttributeFilter;
 use Local\ModelAudit\Contracts\AuditCanonicalizer;
@@ -72,6 +73,13 @@ class ModelAuditServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'model-audit');
+
+        if($this->app->runningInConsole()){
+            $this->commands([
+                VerifyAuditChainCommand::class,
+
+            ]);
+        }
 
         $this->publishes([
             __DIR__ . '/../config/model-audit.php' => config_path('model-audit.php'),
