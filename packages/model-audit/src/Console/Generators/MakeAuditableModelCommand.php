@@ -1,10 +1,9 @@
 <?php
 
-namespace Local\ModelAudit\Console;
+namespace Local\ModelAudit\Console\Generators;
 
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
-use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
 
 #[Signature('make:auditable-model
@@ -13,18 +12,16 @@ use Illuminate\Support\Str;
      {--m|migration : Create a migration file for the model}
 ')]
 #[Description('Create a new auditable Eloquent model class')]
-class MakeAuditableModelCommand extends GeneratorCommand
+class MakeAuditableModelCommand extends MakeAuditClassCommand
 {
     protected $type = 'Auditable model';
 
-    public function handle(): int
+    protected string $stubName = 'auditable-model.stub';
+
+    protected string $namespaceSuffix = '\Models';
+
+    protected function afterGenerated(): int
     {
-        $result = parent::handle();
-
-        if ($result === false) {
-            return self::FAILURE;
-        }
-
         if (!$this->option('migration')) {
             return self::SUCCESS;
         }
@@ -40,15 +37,5 @@ class MakeAuditableModelCommand extends GeneratorCommand
         return $migrationResult === self::SUCCESS
             ? self::SUCCESS
             : self::FAILURE;
-    }
-
-    protected function getStub(): string
-    {
-        return __DIR__ . '/../../stubs/auditable-model.stub';
-    }
-
-    protected function getDefaultNamespace($rootNamespace): string
-    {
-        return $rootNamespace . '\Models';
     }
 }

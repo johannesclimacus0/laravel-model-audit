@@ -1,6 +1,6 @@
 <?php
 
-namespace Local\ModelAudit\Console;
+namespace Local\ModelAudit\Console\Commands;
 
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;

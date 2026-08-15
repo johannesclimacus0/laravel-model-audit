@@ -1,6 +1,6 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Feature;
+namespace Local\ModelAudit\Tests\Feature\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Testing\RefreshDatabase;

@@ -1,8 +1,9 @@
 <?php
 
-namespace Local\ModelAudit\Tests;
+namespace Local\ModelAudit\Tests\Support;
 
 use Illuminate\Filesystem\Filesystem;
+use Local\ModelAudit\Tests\TestCase;
 
 abstract class GeneratorTestCase extends TestCase
 {

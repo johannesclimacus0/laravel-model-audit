@@ -1,8 +1,8 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Feature;
+namespace Local\ModelAudit\Tests\Feature\Console\Generators;
 
-use Local\ModelAudit\Tests\GeneratorTestCase;
+use Local\ModelAudit\Tests\Support\GeneratorTestCase;
 
 class MakeAuditActorResolverCommandTest extends GeneratorTestCase
 {
