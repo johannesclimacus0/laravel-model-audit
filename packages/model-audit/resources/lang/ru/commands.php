@@ -14,4 +14,17 @@ return [
         'verified' => 'Проверено цепочек: :count',
         'invalid_count' => 'Повреждено цепочек: :count',
     ],
+    'status' => [
+        'title' => 'Статус аудита',
+        'enabled' => 'Включен',
+        'connection' => 'Подключение',
+        'entries_table' => 'Таблица записей',
+        'chain_states_table' => 'Таблица состояний цепочек',
+        'entries_count' => 'Записей аудита',
+        'chains_count' => 'Цепочек',
+        'last_entry' => 'Последняя запись',
+        'yes' => 'Да',
+        'no' => 'Нет',
+        'never' => 'отсутствует',
+    ],
 ];

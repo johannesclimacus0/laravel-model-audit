@@ -12,6 +12,7 @@ use Local\ModelAudit\Contracts\AuditChainWriter;
 use Local\ModelAudit\Contracts\AuditHasher;
 use Local\ModelAudit\Contracts\AuditHashGenerator;
 use Local\ModelAudit\Contracts\AuditPayloadBuilder;
+use Local\ModelAudit\Contracts\AuditStatusProvider;
 use Local\ModelAudit\Contracts\IpAddressResolver;
 use Local\ModelAudit\Contracts\RequestIdResolver;
 use Local\ModelAudit\Contracts\UserAgentResolver;
@@ -22,6 +23,7 @@ use Local\ModelAudit\Resolvers\AuthenticatedActorResolver;
 use Local\ModelAudit\Resolvers\RequestIpAddressResolver;
 use Local\ModelAudit\Resolvers\RequestUserAgentResolver;
 use Local\ModelAudit\Resolvers\UuidRequestIdResolver;
+use Local\ModelAudit\Status\DatabaseAuditStatusProvider;
 use Local\ModelAudit\Tests\TestCase;
 use Local\ModelAudit\Verification\DatabaseAuditChainFinder;
 use Local\ModelAudit\Verification\DatabaseAuditChainVerifier;
@@ -106,5 +108,13 @@ class ModelAuditServiceProviderTest extends TestCase
         $resolver = $this->app->make(RequestIdResolver::class);
         $this->assertInstanceOf(UuidRequestIdResolver::class, $resolver);
         $this->assertSame($resolver, $this->app->make(RequestIdResolver::class));
+    }
+
+    public function test_it_registers_the_database_audit_status_provider(): void
+    {
+        $provider = $this->app->make(AuditStatusProvider::class);
+
+        $this->assertInstanceOf(DatabaseAuditStatusProvider::class, $provider);
+        $this->assertSame($provider, $this->app->make(AuditStatusProvider::class));
     }
 }

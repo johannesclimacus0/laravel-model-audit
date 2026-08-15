@@ -17,5 +17,4 @@ class MakeAuditFilterCommand extends MakeAuditClassCommand
     protected string $stubName = 'audit-filter.stub';
 
     protected string $namespaceSuffix = '\ModelAudit\Filtering';
-
 }

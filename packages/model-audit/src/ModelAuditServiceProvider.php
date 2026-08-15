@@ -5,6 +5,7 @@ namespace Local\ModelAudit;
 use Illuminate\Support\ServiceProvider;
 use Local\ModelAudit\Canonicalization\JsonAuditCanonicalizer;
 use Local\ModelAudit\Chains\DatabaseAuditChainWriter;
+use Local\ModelAudit\Console\Commands\AuditStatusCommand;
 use Local\ModelAudit\Console\Commands\VerifyAllAuditChainsCommand;
 use Local\ModelAudit\Console\Commands\VerifyAuditChainCommand;
 use Local\ModelAudit\Console\Generators\MakeAuditableModelCommand;
@@ -25,6 +26,7 @@ use Local\ModelAudit\Contracts\AuditHashGenerator;
 use Local\ModelAudit\Contracts\AuditLogger;
 use Local\ModelAudit\Contracts\AuditPayloadBuilder;
 use Local\ModelAudit\Contracts\AuditRecorder;
+use Local\ModelAudit\Contracts\AuditStatusProvider;
 use Local\ModelAudit\Contracts\AuditValueMasker;
 use Local\ModelAudit\Contracts\IpAddressResolver;
 use Local\ModelAudit\Contracts\RequestIdResolver;
@@ -40,6 +42,7 @@ use Local\ModelAudit\Resolvers\AuthenticatedActorResolver;
 use Local\ModelAudit\Resolvers\RequestIpAddressResolver;
 use Local\ModelAudit\Resolvers\RequestUserAgentResolver;
 use Local\ModelAudit\Resolvers\UuidRequestIdResolver;
+use Local\ModelAudit\Status\DatabaseAuditStatusProvider;
 use Local\ModelAudit\Verification\DatabaseAuditChainFinder;
 use Local\ModelAudit\Verification\DatabaseAuditChainVerifier;
 
@@ -78,6 +81,8 @@ class ModelAuditServiceProvider extends ServiceProvider
         $this->app->singleton(AuditHasher::class, Sha256AuditHasher::class);
 
         $this->app->singleton(AuditChainFinder::class, DatabaseAuditChainFinder::class);
+
+        $this->app->singleton(AuditStatusProvider::class, DatabaseAuditStatusProvider::class);
     }
 
     public function boot(): void
@@ -88,6 +93,7 @@ class ModelAuditServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
+                AuditStatusCommand::class,
                 VerifyAllAuditChainsCommand::class,
                 VerifyAuditChainCommand::class,
                 MakeAuditableModelCommand::class,

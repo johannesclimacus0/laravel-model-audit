@@ -12,7 +12,7 @@ abstract class MakeAuditClassCommand extends GeneratorCommand
 
     public function handle(): int
     {
-        if(parent::handle() === false) {
+        if (parent::handle() === false) {
             return self::FAILURE;
         }
 

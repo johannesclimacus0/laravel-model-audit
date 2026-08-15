@@ -3,6 +3,7 @@
 namespace Local\ModelAudit\Contracts;
 
 use Local\ModelAudit\DTO\AuditChainIdentifier;
+
 interface AuditChainFinder
 {
     /**

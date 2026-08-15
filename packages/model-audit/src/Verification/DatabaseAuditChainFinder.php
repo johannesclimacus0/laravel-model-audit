@@ -6,9 +6,9 @@ use Local\ModelAudit\Contracts\AuditChainFinder;
 use Local\ModelAudit\DTO\AuditChainIdentifier;
 use Local\ModelAudit\Models\AuditChainState;
 use Local\ModelAudit\Models\AuditEntry;
+
 class DatabaseAuditChainFinder implements AuditChainFinder
 {
-
     public function all(): iterable
     {
         $entrySubjects = AuditEntry::query()

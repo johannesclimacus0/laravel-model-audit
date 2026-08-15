@@ -14,4 +14,17 @@ return [
         'verified' => 'Verified chains: :count',
         'invalid_count' => 'Invalid chains: :count',
     ],
+    'status' => [
+        'title' => 'Audit status',
+        'enabled' => 'Enabled',
+        'connection' => 'Connection',
+        'entries_table' => 'Entries table',
+        'chain_states_table' => 'Chain states table',
+        'entries_count' => 'Audit entries',
+        'chains_count' => 'Chains',
+        'last_entry' => 'Last entry',
+        'yes' => 'Yes',
+        'no' => 'No',
+        'never' => 'never',
+    ],
 ];
