@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Local\ModelAudit\Canonicalization\JsonAuditCanonicalizer;
 use Local\ModelAudit\Chains\DatabaseAuditChainWriter;
 use Local\ModelAudit\Console\Commands\AuditStatusCommand;
+use Local\ModelAudit\Console\Commands\ShowAuditHistoryCommand;
 use Local\ModelAudit\Console\Commands\VerifyAllAuditChainsCommand;
 use Local\ModelAudit\Console\Commands\VerifyAuditChainCommand;
 use Local\ModelAudit\Console\Generators\MakeAuditableModelCommand;
@@ -23,6 +24,7 @@ use Local\ModelAudit\Contracts\AuditChainVerifier;
 use Local\ModelAudit\Contracts\AuditChainWriter;
 use Local\ModelAudit\Contracts\AuditHasher;
 use Local\ModelAudit\Contracts\AuditHashGenerator;
+use Local\ModelAudit\Contracts\AuditHistoryReader;
 use Local\ModelAudit\Contracts\AuditLogger;
 use Local\ModelAudit\Contracts\AuditPayloadBuilder;
 use Local\ModelAudit\Contracts\AuditRecorder;
@@ -34,6 +36,7 @@ use Local\ModelAudit\Contracts\UserAgentResolver;
 use Local\ModelAudit\Filtering\DefaultAuditAttributeFilter;
 use Local\ModelAudit\Hashing\DefaultAuditHashGenerator;
 use Local\ModelAudit\Hashing\Sha256AuditHasher;
+use Local\ModelAudit\History\DatabaseAuditHistoryReader;
 use Local\ModelAudit\Logging\DefaultAuditLogger;
 use Local\ModelAudit\Masking\DefaultAuditValueMasker;
 use Local\ModelAudit\Payloads\DefaultAuditPayloadBuilder;
@@ -83,6 +86,8 @@ class ModelAuditServiceProvider extends ServiceProvider
         $this->app->singleton(AuditChainFinder::class, DatabaseAuditChainFinder::class);
 
         $this->app->singleton(AuditStatusProvider::class, DatabaseAuditStatusProvider::class);
+
+        $this->app->singleton(AuditHistoryReader::class, DatabaseAuditHistoryReader::class);
     }
 
     public function boot(): void
@@ -94,6 +99,7 @@ class ModelAuditServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 AuditStatusCommand::class,
+                ShowAuditHistoryCommand::class,
                 VerifyAllAuditChainsCommand::class,
                 VerifyAuditChainCommand::class,
                 MakeAuditableModelCommand::class,

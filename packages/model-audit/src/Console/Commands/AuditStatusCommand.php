@@ -20,13 +20,9 @@ class AuditStatusCommand extends Command
     {
         $status = $this->provider->get();
 
-        $this->newLine();
-
         $this->components->info(
             __('model-audit::commands.status.title')
         );
-
-        $this->newLine();
 
         $this->table(
             [],

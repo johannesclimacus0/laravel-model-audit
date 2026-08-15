@@ -27,4 +27,20 @@ return [
         'no' => 'No',
         'never' => 'never',
     ],
+    'show' => [
+        'title' => 'Audit history: :subject_type [:subject_id]',
+        'none' => 'No audit entries found.',
+        'system' => 'system',
+        'invalid_limit_integer' => 'Limit must be an integer.',
+        'invalid_limit_range' => 'Limit must be between 1 and :max.',
+        'subject_type_required' => 'Subject type cannot be empty.',
+        'subject_id_required' => 'Subject ID cannot be empty.',
+        'json_encoding_failed' => 'Unable to encode audit history as JSON.',
+        'headers' => [
+            'uuid' => 'UUID',
+            'event' => 'Event',
+            'actor' => 'Actor',
+            'created_at' => 'Created',
+        ],
+    ],
 ];

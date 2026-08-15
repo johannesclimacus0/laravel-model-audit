@@ -27,4 +27,20 @@ return [
         'no' => 'Нет',
         'never' => 'отсутствует',
     ],
+    'show' => [
+        'title' => 'История аудита: :subject_type [:subject_id]',
+        'none' => 'Записи аудита не найдены.',
+        'system' => 'система',
+        'invalid_limit_integer' => 'Лимит должен быть целым числом.',
+        'invalid_limit_range' => 'Лимит должен быть от 1 до :max.',
+        'subject_type_required' => 'Тип субъекта не может быть пустым.',
+        'subject_id_required' => 'ID субъекта не может быть пустым.',
+        'json_encoding_failed' => 'Не удалось преобразовать историю аудита в JSON.',
+        'headers' => [
+            'uuid' => 'UUID',
+            'event' => 'Событие',
+            'actor' => 'Инициатор',
+            'created_at' => 'Создано',
+        ],
+    ],
 ];
