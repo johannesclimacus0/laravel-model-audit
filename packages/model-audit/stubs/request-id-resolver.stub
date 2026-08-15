@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ namespace }};
+
+use Local\ModelAudit\Contracts\RequestIdResolver;
+
+class {{ class }} implements RequestIdResolver
+{
+    public function resolve(): ?string
+    {
+        return null;
+    }
+}

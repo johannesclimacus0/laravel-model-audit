@@ -1,0 +1,14 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Model;
+use Local\ModelAudit\Contracts\AuditAttributeFilter;
+
+class {{ class }} implements AuditAttributeFilter
+{
+    public function filter(Model $model, array $values): array
+    {
+        return $values;
+    }
+}

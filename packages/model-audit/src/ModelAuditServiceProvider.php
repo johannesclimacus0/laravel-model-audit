@@ -6,6 +6,11 @@ use Illuminate\Support\ServiceProvider;
 use Local\ModelAudit\Canonicalization\JsonAuditCanonicalizer;
 use Local\ModelAudit\Chains\DatabaseAuditChainWriter;
 use Local\ModelAudit\Console\MakeAuditableModelCommand;
+use Local\ModelAudit\Console\MakeAuditActorResolverCommand;
+use Local\ModelAudit\Console\MakeAuditFilterCommand;
+use Local\ModelAudit\Console\MakeAuditHasherCommand;
+use Local\ModelAudit\Console\MakeAuditIpResolverCommand;
+use Local\ModelAudit\Console\MakeAuditRequestIdResolverCommand;
 use Local\ModelAudit\Console\VerifyAuditChainCommand;
 use Local\ModelAudit\Contracts\ActorResolver;
 use Local\ModelAudit\Contracts\AuditAttributeFilter;
@@ -79,6 +84,11 @@ class ModelAuditServiceProvider extends ServiceProvider
             $this->commands([
                 VerifyAuditChainCommand::class,
                 MakeAuditableModelCommand::class,
+                MakeAuditActorResolverCommand::class,
+                MakeAuditRequestIdResolverCommand::class,
+                MakeAuditIpResolverCommand::class,
+                MakeAuditHasherCommand::class,
+                MakeAuditFilterCommand::class,
             ]);
         }
 

@@ -1,0 +1,14 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Model;
+use Local\ModelAudit\Contracts\ActorResolver;
+
+class {{ class }} implements ActorResolver
+{
+    public function resolve(): ?Model
+    {
+        return null;
+    }
+}

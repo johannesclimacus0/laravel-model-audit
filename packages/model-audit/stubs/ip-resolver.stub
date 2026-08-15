@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ namespace }};
+
+use Local\ModelAudit\Contracts\IpAddressResolver;
+
+class {{ class }} implements IpAddressResolver
+{
+    public function resolve(): ?string
+    {
+        return null;
+    }
+}
