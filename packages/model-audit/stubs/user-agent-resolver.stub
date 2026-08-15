@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ namespace }};
+
+use Local\ModelAudit\Contracts\UserAgentResolver;
+
+class {{ class }} implements UserAgentResolver
+{
+    public function resolve(): ?string
+    {
+        return null;
+    }
+}

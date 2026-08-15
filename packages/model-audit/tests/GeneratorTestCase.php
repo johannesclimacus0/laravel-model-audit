@@ -39,8 +39,7 @@ abstract class GeneratorTestCase extends TestCase
         string $name,
         string $relativePath,
         array $expectedContents
-    ): void
-    {
+    ): void {
         $this->artisan($command, [
             'name' => $name,
         ])->assertSuccessful();

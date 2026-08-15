@@ -62,4 +62,17 @@ class MakeAuditExtensionCommandsTest extends GeneratorTestCase
         );
     }
 
+    public function test_it_creates_a_user_agent_resolver(): void
+    {
+        $this->assertGeneratorCreates(
+            command: 'make:audit-user-agent-resolver',
+            name: 'UserAgentResolver',
+            relativePath: '/ModelAudit/Resolvers/UserAgentResolver.php',
+            expectedContents: [
+                'class UserAgentResolver implements UserAgentResolver',
+                'public function resolve(): ?string',
+                'return null;',
+            ],
+        );
+    }
 }

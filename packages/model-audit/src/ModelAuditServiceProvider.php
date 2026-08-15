@@ -11,6 +11,7 @@ use Local\ModelAudit\Console\MakeAuditFilterCommand;
 use Local\ModelAudit\Console\MakeAuditHasherCommand;
 use Local\ModelAudit\Console\MakeAuditIpResolverCommand;
 use Local\ModelAudit\Console\MakeAuditRequestIdResolverCommand;
+use Local\ModelAudit\Console\MakeAuditUserAgentResolverCommand;
 use Local\ModelAudit\Console\VerifyAuditChainCommand;
 use Local\ModelAudit\Contracts\ActorResolver;
 use Local\ModelAudit\Contracts\AuditAttributeFilter;
@@ -89,6 +90,7 @@ class ModelAuditServiceProvider extends ServiceProvider
                 MakeAuditIpResolverCommand::class,
                 MakeAuditHasherCommand::class,
                 MakeAuditFilterCommand::class,
+                MakeAuditUserAgentResolverCommand::class,
             ]);
         }
 
