@@ -80,4 +80,61 @@ class MakeAuditableModelCommandTest extends GeneratorTestCase
             $contents,
         );
     }
+
+    public function test_it_creates_a_migration_for_the_model(): void
+    {
+        $databasePath = $this->tmpAppPath . '/database';
+        $migrationsPath = $databasePath . '/migrations';
+
+        $this->filesystem->makeDirectory($migrationsPath, 0777, true);
+
+        $this->app->useDatabasePath($databasePath);
+
+        $this->artisan('make:auditable-model', [
+            'name' => 'Invoice',
+            '--migration' => true,
+        ])->assertSuccessful();
+
+        $this->assertFileExists($this->tmpAppPath . '/Models/Invoice.php');
+
+        $migrationFiles = $this->filesystem->glob(
+            $migrationsPath . '/*_create_invoices_table.php',
+        );
+
+        $this->assertCount(1, $migrationFiles);
+
+        $contents = $this->filesystem->get($migrationFiles[0]);
+
+        $this->assertStringContainsString("Schema::create('invoices'", $contents);
+    }
+
+    public function test_it_creates_a_migration_for_a_model_in_a_nested_namespace(): void
+    {
+        $databasePath = $this->tmpAppPath . '/database';
+        $migrationsPath = $databasePath . '/migrations';
+
+        $this->filesystem->makeDirectory($migrationsPath, 0777, true);
+
+        $this->app->useDatabasePath($databasePath);
+
+        $this->artisan('make:auditable-model', [
+            'name' => 'Billing/InvoiceItem',
+            '--migration' => true,
+        ])->assertSuccessful();
+
+        $this->assertFileExists($this->tmpAppPath . '/Models/Billing/InvoiceItem.php');
+
+        $migrationFiles = $this->filesystem->glob(
+            $migrationsPath . '/*_create_invoice_items_table.php',
+        );
+
+        $this->assertCount(1, $migrationFiles);
+
+        $contents = $this->filesystem->get($migrationFiles[0]);
+
+        $this->assertStringContainsString(
+            "Schema::create('invoice_items'",
+            $contents,
+        );
+    }
 }
