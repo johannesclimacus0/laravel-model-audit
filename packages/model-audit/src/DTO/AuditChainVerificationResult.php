@@ -10,9 +10,7 @@ class AuditChainVerificationResult
         public bool $valid,
         public ?AuditChainFailure $failure = null,
         public ?string $failedEntryUuid = null,
-    )
-    {
-    }
+    ) {}
 
     public static function valid(): self
     {
@@ -22,8 +20,7 @@ class AuditChainVerificationResult
     public static function invalid(
         AuditChainFailure $failure,
         ?string $failedEntryUuid = null
-    ): self
-    {
+    ): self {
         return new self(false, $failure, $failedEntryUuid);
     }
 }

@@ -13,9 +13,7 @@ class DatabaseAuditChainVerifier implements AuditChainVerifier
 {
     public function __construct(
         private AuditHashGenerator $hashGenerator,
-    )
-    {
-    }
+    ) {}
 
     public function verify(string $subjectType, string $subjectId): AuditChainVerificationResult
     {
@@ -30,11 +28,11 @@ class DatabaseAuditChainVerifier implements AuditChainVerifier
             ->where('subject_id', $subjectId)
             ->first();
 
-        if($state === null && $entries->isEmpty()) {
+        if ($state === null && $entries->isEmpty()) {
             return AuditChainVerificationResult::valid();
         }
 
-        if($state === null) {
+        if ($state === null) {
             return AuditChainVerificationResult::invalid(
                 AuditChainFailure::StateMissing,
                 $entries->first()?->uuid,
@@ -44,7 +42,7 @@ class DatabaseAuditChainVerifier implements AuditChainVerifier
         $previousHash = null;
 
         foreach ($entries as $entry) {
-            if(!$this->hashesMatch($previousHash, $entry->previous_hash)) {
+            if (!$this->hashesMatch($previousHash, $entry->previous_hash)) {
                 return AuditChainVerificationResult::invalid(
                     AuditChainFailure::PreviousHashMismatch,
                     $entry->uuid,
@@ -53,7 +51,7 @@ class DatabaseAuditChainVerifier implements AuditChainVerifier
 
             $calculatedHash = $this->hashGenerator->generateForEntry($entry);
 
-            if(!$this->hashesMatch($calculatedHash, $entry->hash)) {
+            if (!$this->hashesMatch($calculatedHash, $entry->hash)) {
                 return AuditChainVerificationResult::invalid(
                     AuditChainFailure::HashMismatch,
                     $entry->uuid,
@@ -63,20 +61,20 @@ class DatabaseAuditChainVerifier implements AuditChainVerifier
             $previousHash = $entry->hash;
         }
 
-        if($state->entries_count !== $entries->count()) {
+        if ($state->entries_count !== $entries->count()) {
             return AuditChainVerificationResult::invalid(
                 AuditChainFailure::EntryCountMismatch,
             );
         }
 
-        if(!$this->hashesMatch($previousHash, $state->last_hash)) {
+        if (!$this->hashesMatch($previousHash, $state->last_hash)) {
             return AuditChainVerificationResult::invalid(
                 AuditChainFailure::LastHashMismatch,
                 $entries->last()?->uuid,
             );
         }
 
-        if($state->last_entry_uuid !== $entries->last()?->uuid) {
+        if ($state->last_entry_uuid !== $entries->last()?->uuid) {
             return AuditChainVerificationResult::invalid(
                 AuditChainFailure::LastEntryUuidMismatch,
                 $entries->last()?->uuid,
@@ -88,7 +86,7 @@ class DatabaseAuditChainVerifier implements AuditChainVerifier
 
     private function hashesMatch(?string $expected, ?string $actual): bool
     {
-        if($expected === null || $actual === null) {
+        if ($expected === null || $actual === null) {
             return $expected === $actual;
         }
 

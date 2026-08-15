@@ -8,7 +8,8 @@ use Local\ModelAudit\Models\AuditEntry;
 
 class DefaultAuditPayloadBuilder implements AuditPayloadBuilder
 {
-    public function build(AuditEntryData $data, string $uuid, ?string $previousHash): array {
+    public function build(AuditEntryData $data, string $uuid, ?string $previousHash): array
+    {
         return [
             'uuid' => $uuid,
             'previous_hash' => $previousHash,
@@ -27,7 +28,8 @@ class DefaultAuditPayloadBuilder implements AuditPayloadBuilder
         ];
     }
 
-    public function buildFromEntry(AuditEntry $entry): array {
+    public function buildFromEntry(AuditEntry $entry): array
+    {
         return [
             'uuid' => $entry->uuid,
             'previous_hash' => $entry->previous_hash,

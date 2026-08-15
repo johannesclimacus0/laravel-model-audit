@@ -13,9 +13,7 @@ class DatabaseAuditChainWriter implements AuditChainWriter
 {
     public function __construct(
         private AuditHashGenerator $hashGenerator,
-    )
-    {
-    }
+    ) {}
 
     public function append(AuditEntryData $data): AuditEntry
     {

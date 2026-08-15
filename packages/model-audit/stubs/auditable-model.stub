@@ -1,0 +1,17 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Model;
+use Local\ModelAudit\Traits\Auditable;
+
+class {{ class }} extends Model
+{
+    use Auditable;
+
+    protected array $auditInclude = [];
+
+    protected array $auditExclude = [];
+
+    protected array $auditMasks = [];
+}

@@ -10,12 +10,12 @@ return new class extends Migration
     {
         $connection = config('model-audit.connection') ?: config('database.default');
         Schema::connection($connection)->table(
-                config('model-audit.table', 'audit_entries'),
-                function (Blueprint $table): void {
-                    $table->char('previous_hash', 64)->nullable();
-                    $table->char('hash', 64)->nullable();
-                }
-            );
+            config('model-audit.table', 'audit_entries'),
+            function (Blueprint $table): void {
+                $table->char('previous_hash', 64)->nullable();
+                $table->char('hash', 64)->nullable();
+            }
+        );
     }
 
     public function down(): void
@@ -24,13 +24,13 @@ return new class extends Migration
             ?: config('database.default');
 
         Schema::connection($connection)->table(
-                config('model-audit.table', 'audit_entries'),
-                function (Blueprint $table): void {
-                    $table->dropColumn([
-                        'previous_hash',
-                        'hash',
-                    ]);
-                }
-            );
+            config('model-audit.table', 'audit_entries'),
+            function (Blueprint $table): void {
+                $table->dropColumn([
+                    'previous_hash',
+                    'hash',
+                ]);
+            }
+        );
     }
 };

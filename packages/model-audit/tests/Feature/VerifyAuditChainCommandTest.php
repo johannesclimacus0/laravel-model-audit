@@ -2,11 +2,11 @@
 
 namespace Local\ModelAudit\Tests\Feature;
 
+use Illuminate\Console\Command;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Local\ModelAudit\Models\AuditEntry;
 use Local\ModelAudit\Tests\Support\TestModel;
 use Local\ModelAudit\Tests\TestCase;
-use Illuminate\Console\Command;
 
 class VerifyAuditChainCommandTest extends TestCase
 {

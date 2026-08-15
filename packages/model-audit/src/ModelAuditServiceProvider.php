@@ -5,12 +5,13 @@ namespace Local\ModelAudit;
 use Illuminate\Support\ServiceProvider;
 use Local\ModelAudit\Canonicalization\JsonAuditCanonicalizer;
 use Local\ModelAudit\Chains\DatabaseAuditChainWriter;
+use Local\ModelAudit\Console\MakeAuditableModelCommand;
 use Local\ModelAudit\Console\VerifyAuditChainCommand;
 use Local\ModelAudit\Contracts\ActorResolver;
 use Local\ModelAudit\Contracts\AuditAttributeFilter;
 use Local\ModelAudit\Contracts\AuditCanonicalizer;
-use Local\ModelAudit\Contracts\AuditChainWriter;
 use Local\ModelAudit\Contracts\AuditChainVerifier;
+use Local\ModelAudit\Contracts\AuditChainWriter;
 use Local\ModelAudit\Contracts\AuditHasher;
 use Local\ModelAudit\Contracts\AuditHashGenerator;
 use Local\ModelAudit\Contracts\AuditLogger;
@@ -21,8 +22,8 @@ use Local\ModelAudit\Contracts\IpAddressResolver;
 use Local\ModelAudit\Contracts\RequestIdResolver;
 use Local\ModelAudit\Contracts\UserAgentResolver;
 use Local\ModelAudit\Filtering\DefaultAuditAttributeFilter;
-use Local\ModelAudit\Hashing\Sha256AuditHasher;
 use Local\ModelAudit\Hashing\DefaultAuditHashGenerator;
+use Local\ModelAudit\Hashing\Sha256AuditHasher;
 use Local\ModelAudit\Logging\DefaultAuditLogger;
 use Local\ModelAudit\Masking\DefaultAuditValueMasker;
 use Local\ModelAudit\Payloads\DefaultAuditPayloadBuilder;
@@ -74,10 +75,10 @@ class ModelAuditServiceProvider extends ServiceProvider
 
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'model-audit');
 
-        if($this->app->runningInConsole()){
+        if ($this->app->runningInConsole()) {
             $this->commands([
                 VerifyAuditChainCommand::class,
-
+                MakeAuditableModelCommand::class,
             ]);
         }
 

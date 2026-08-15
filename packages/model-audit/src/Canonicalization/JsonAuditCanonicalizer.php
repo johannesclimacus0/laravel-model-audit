@@ -21,11 +21,11 @@ class JsonAuditCanonicalizer implements AuditCanonicalizer
     private function sortRecursively(array $values): array
     {
         foreach ($values as $key => $value) {
-            if(is_array($value)) {
+            if (is_array($value)) {
                 $values[$key] = $this->sortRecursively($value);
             }
         }
-        if(!array_is_list($values)) {
+        if (!array_is_list($values)) {
             ksort($values, SORT_STRING);
         }
 

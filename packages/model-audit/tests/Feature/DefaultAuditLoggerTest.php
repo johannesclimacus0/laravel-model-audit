@@ -45,6 +45,7 @@ class DefaultAuditLoggerTest extends TestCase
             'subject_id' => (string) $model->getKey(),
         ]);
     }
+
     public function test_it_does_not_capture_disabled_request_context(): void
     {
         config()->set('model-audit.context.ip_address', false);

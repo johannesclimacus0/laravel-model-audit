@@ -15,11 +15,10 @@ class DefaultAuditHashGenerator implements AuditHashGenerator
         private AuditPayloadBuilder $payloadBuilder,
         private AuditCanonicalizer $canonicalizer,
         private AuditHasher $hasher,
-    )
-    {
-    }
+    ) {}
 
-    public function generate(AuditEntryData $data, string $uuid, ?string $previousHash): string {
+    public function generate(AuditEntryData $data, string $uuid, ?string $previousHash): string
+    {
         $payload = $this->payloadBuilder->build($data, $uuid, $previousHash);
 
         $canonicalPayload = $this->canonicalizer->canonicalize($payload);
@@ -27,7 +26,8 @@ class DefaultAuditHashGenerator implements AuditHashGenerator
         return $this->hasher->hash($canonicalPayload);
     }
 
-    public function generateForEntry(AuditEntry $entry): string {
+    public function generateForEntry(AuditEntry $entry): string
+    {
         $payload = $this->payloadBuilder->buildFromEntry($entry);
 
         $canonicalPayload = $this->canonicalizer->canonicalize($payload);

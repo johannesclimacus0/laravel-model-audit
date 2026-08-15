@@ -13,9 +13,7 @@ class DatabaseAuditRecorder implements AuditRecorder
 {
     public function __construct(
         private AuditChainWriter $chainWriter,
-    )
-    {
-    }
+    ) {}
 
     public function record(AuditEntryData $data): ?AuditEntry
     {

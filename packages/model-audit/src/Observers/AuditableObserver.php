@@ -5,7 +5,6 @@ namespace Local\ModelAudit\Observers;
 use Illuminate\Database\Eloquent\Model;
 use Local\ModelAudit\Contracts\AuditAttributeFilter;
 use Local\ModelAudit\Contracts\AuditLogger;
-use Local\ModelAudit\Contracts\AuditRecorder;
 use Local\ModelAudit\Contracts\AuditValueMasker;
 use Local\ModelAudit\Enums\ModelEvent;
 
