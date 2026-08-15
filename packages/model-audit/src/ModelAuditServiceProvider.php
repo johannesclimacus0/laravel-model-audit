@@ -5,6 +5,7 @@ namespace Local\ModelAudit;
 use Illuminate\Support\ServiceProvider;
 use Local\ModelAudit\Canonicalization\JsonAuditCanonicalizer;
 use Local\ModelAudit\Chains\DatabaseAuditChainWriter;
+use Local\ModelAudit\Console\Commands\VerifyAllAuditChainsCommand;
 use Local\ModelAudit\Console\Commands\VerifyAuditChainCommand;
 use Local\ModelAudit\Console\Generators\MakeAuditableModelCommand;
 use Local\ModelAudit\Console\Generators\MakeAuditActorResolverCommand;
@@ -16,6 +17,7 @@ use Local\ModelAudit\Console\Generators\MakeAuditUserAgentResolverCommand;
 use Local\ModelAudit\Contracts\ActorResolver;
 use Local\ModelAudit\Contracts\AuditAttributeFilter;
 use Local\ModelAudit\Contracts\AuditCanonicalizer;
+use Local\ModelAudit\Contracts\AuditChainFinder;
 use Local\ModelAudit\Contracts\AuditChainVerifier;
 use Local\ModelAudit\Contracts\AuditChainWriter;
 use Local\ModelAudit\Contracts\AuditHasher;
@@ -38,6 +40,7 @@ use Local\ModelAudit\Resolvers\AuthenticatedActorResolver;
 use Local\ModelAudit\Resolvers\RequestIpAddressResolver;
 use Local\ModelAudit\Resolvers\RequestUserAgentResolver;
 use Local\ModelAudit\Resolvers\UuidRequestIdResolver;
+use Local\ModelAudit\Verification\DatabaseAuditChainFinder;
 use Local\ModelAudit\Verification\DatabaseAuditChainVerifier;
 
 class ModelAuditServiceProvider extends ServiceProvider
@@ -73,6 +76,8 @@ class ModelAuditServiceProvider extends ServiceProvider
         $this->app->scoped(AuditLogger::class, DefaultAuditLogger::class);
 
         $this->app->singleton(AuditHasher::class, Sha256AuditHasher::class);
+
+        $this->app->singleton(AuditChainFinder::class, DatabaseAuditChainFinder::class);
     }
 
     public function boot(): void
@@ -83,6 +88,7 @@ class ModelAuditServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
+                VerifyAllAuditChainsCommand::class,
                 VerifyAuditChainCommand::class,
                 MakeAuditableModelCommand::class,
                 MakeAuditActorResolverCommand::class,

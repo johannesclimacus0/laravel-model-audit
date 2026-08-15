@@ -6,6 +6,7 @@ use Local\ModelAudit\Canonicalization\JsonAuditCanonicalizer;
 use Local\ModelAudit\Chains\DatabaseAuditChainWriter;
 use Local\ModelAudit\Contracts\ActorResolver;
 use Local\ModelAudit\Contracts\AuditCanonicalizer;
+use Local\ModelAudit\Contracts\AuditChainFinder;
 use Local\ModelAudit\Contracts\AuditChainVerifier;
 use Local\ModelAudit\Contracts\AuditChainWriter;
 use Local\ModelAudit\Contracts\AuditHasher;
@@ -22,10 +23,19 @@ use Local\ModelAudit\Resolvers\RequestIpAddressResolver;
 use Local\ModelAudit\Resolvers\RequestUserAgentResolver;
 use Local\ModelAudit\Resolvers\UuidRequestIdResolver;
 use Local\ModelAudit\Tests\TestCase;
+use Local\ModelAudit\Verification\DatabaseAuditChainFinder;
 use Local\ModelAudit\Verification\DatabaseAuditChainVerifier;
 
 class ModelAuditServiceProviderTest extends TestCase
 {
+    public function test_it_registers_the_database_audit_chain_finder(): void
+    {
+        $finder = $this->app->make(AuditChainFinder::class);
+
+        $this->assertInstanceOf(DatabaseAuditChainFinder::class, $finder);
+        $this->assertSame($finder, $this->app->make(AuditChainFinder::class));
+    }
+
     public function test_it_registers_the_database_audit_chain_writer(): void
     {
         $writer = $this->app->make(AuditChainWriter::class);

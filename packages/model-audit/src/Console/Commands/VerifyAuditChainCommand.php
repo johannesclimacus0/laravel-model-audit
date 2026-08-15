@@ -7,7 +7,10 @@ use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 use Local\ModelAudit\Contracts\AuditChainVerifier;
 
-#[Signature('model-audit:verify {subjectType : Stored morph type} {subjectId : Subject primary key}')]
+#[Signature('model-audit:verify
+    {subjectType : Stored morph type}
+    {subjectId : Subject primary key}
+')]
 #[Description('Verify the audit chain for subject')]
 class VerifyAuditChainCommand extends Command
 {
