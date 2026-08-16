@@ -42,7 +42,7 @@ class DatabaseAuditStatusProviderTest extends TestCase
             ->latest('id')
             ->firstOrFail();
 
-        $status = new DatabaseAuditStatusProvider()->get();
+        $status = (new DatabaseAuditStatusProvider)->get();
 
         $this->assertSame(2, $status->entriesCount);
         $this->assertSame(1, $status->chainsCount);

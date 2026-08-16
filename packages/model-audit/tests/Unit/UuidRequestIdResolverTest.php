@@ -10,7 +10,7 @@ class UuidRequestIdResolverTest extends TestCase
 {
     public function test_it_generates_a_uuid(): void
     {
-        $uuid = new UuidRequestIdResolver()->resolve();
+        $uuid = (new UuidRequestIdResolver)->resolve();
         $this->assertTrue(Str::isUuid($uuid));
     }
 
