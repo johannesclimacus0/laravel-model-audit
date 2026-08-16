@@ -1,58 +1,211 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Model Audit
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Учебный пакет для Laravel, который сохраняет историю изменений Eloquent-моделей.
+## Возможности
 
-## About Laravel
+* автоматический аудит создания, изменения, удаления и восстановления моделей;
+* сохранение только изменённых полей;
+* сохранение старых и новых значений
+* сохранение IP-адреса, User-Agent и ID запроса
+* фильтрация и маскирование данных
+* SHA-256-цепочку для проверки истории изменений
+* проверка целостности через Artisan-команды и веб-интерфейс
+* Blade-интерфейс
+* Feature- и Unit- тесты
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Требования
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- PHP 8.3+
+- Laravel 13
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Установка
 
-## Learning Laravel
+Установите пакет через Composer:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+```
+composer require johannesclimacus/model-audit
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Запустите миграции:
 
-## Contributing
+```
+php artisan migrate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Опубликуйте конфигурации:
 
-## Code of Conduct
+```
+php artisan vendor:publish --tag=model-audit-config
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Также можно опубликовать переводы и Blade-шаблоны:
 
-## Security Vulnerabilities
+```
+php artisan vendor:publish --tag=model-audit-lang
+php artisan vendor:publish --tag=model-audit-views
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Быстрый старт
 
-## License
+Подключите трейт `Auditable` к Eloquent-модели:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Johannesclimacus\ModelAudit\Traits\Auditable;
+
+class User extends Model
+{
+    use Auditable;
+}
+```
+
+После этого изменения модели будут автоматически записываться в аудит.
+
+Модель с подключённым трейтом, а также с заготовками фильтрации и маскирования можно создать с помощью генератора:
+
+```
+php artisan make:auditable-model Invoice --migration
+```
+
+## Выбор отслеживаемых атрибутов
+
+Чтобы отслеживать только определённые атрибуты, задайте их в модели:
+
+```php
+protected array $auditInclude = [
+    //
+];
+```
+
+Или исключите отдельные атрибуты:
+
+```
+protected array $auditExclude = [
+    //
+];
+```
+
+## Маскирование конфиденциальных значений
+
+Настройте стратегии маскирования в отслеживаемой модели:
+
+```
+protected array $auditMasks = [
+    'email' => 'email',
+    'phone' => 'last_four',
+    'password' => 'redact',
+];
+```
+
+| Стратегия | Пример |
+| --- | --- |
+| `email` | `te***@example.com` |
+| `last_four` | `******1234` |
+| `redact` | `********` |
+
+## Пользовательские события
+
+Используйте `AuditLogger` для записи пользовательских бизнес-событий.
+
+```
+use Johannesclimacus\ModelAudit\Contracts\AuditLogger;
+
+$logger = app(AuditLogger::class);
+
+$logger->record(
+    subject: $invoice,
+    event: 'invoice.approved',
+    metadata: [
+        'reason' => 'Manager approval',
+    ],
+);
+```
+
+## Авторизация
+
+Доступ к интерфейсу аудита защищён правилом Gate `viewModelAudit`. Определите его в методе `boot()` класса `AppServiceProvider`:
+
+```
+use App\Models\User;
+use Illuminate\Support\Facades\Gate;
+
+Gate::define(
+    'viewModelAudit',
+    fn (User $user): bool => $user->is_admin,
+);
+```
+
+## Tailwind
+
+Интерфейс использует Tailwind CSS 4. Добавьте шаблоны пакета и поддержку тёмной темы в `resources/css/app.css`:
+
+```
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@source '../../vendor/johannesclimacus/model-audit/resources/views/**/*.blade.php';
+```
+
+Затем соберите стили:
+
+```
+npm install
+npm run build
+```
+
+
+## Веб-интерфейс
+
+Стандартные маршруты:
+
+```
+GET /audit
+GET /audit/{uuid}
+GET /audit/subjects/{type}/{id}
+```
+
+
+## Проверка целостности
+
+Для каждого объекта создаётся отдельная цепочка хешей. Каждая запись хранит свой хеш и хеш предыдущей записи.
+
+Проверить один объект:
+
+```
+php artisan model-audit:verify 'App\Models\Users' 1
+```
+
+Проверить все цепочки:
+
+```
+php artisan model-audit:verify-all
+```
+
+Посмотреть состояние пакета или историю объекта:
+
+```
+php artisan model-audit:status
+php artisan model-audit:show 'App\Models\Users' 1
+```
+
+
+## Замена сервисов
+
+Свою реализацию сервиса можно зарегистрировать в service provider приложения:
+
+```
+use App\Audit\ServiceActorResolver;
+use Johannesclimacus\ModelAudit\Contracts\ActorResolver;
+
+$this->app->singleton(
+    ActorResolver::class,
+    ServiceActorResolver::class,
+);
+```
+
+Таким же способом можно заменить resolver, filter, masker, hasher, canonicalizer, recorder, reader и verifier.
