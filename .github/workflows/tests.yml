@@ -12,10 +12,6 @@ jobs:
       matrix:
         php: ['8.3', '8.4', '8.5']
 
-    defaults:
-      run:
-        working-directory: packages/model-audit
-
     steps:
       - name: Checkout
         uses: actions/checkout@v5
