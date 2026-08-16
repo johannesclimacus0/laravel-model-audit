@@ -98,8 +98,6 @@ class ShowAuditHistoryCommand extends Command
             ])
         );
 
-        $this->newLine();
-
         $this->table(
             [
                 __('model-audit::commands.show.headers.uuid'),
