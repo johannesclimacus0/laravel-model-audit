@@ -1,8 +1,8 @@
 <?php
 
-namespace Local\ModelAudit\Tests;
+namespace Johannesclimacus\ModelAudit\Tests;
 
-use Local\ModelAudit\ModelAuditServiceProvider;
+use Johannesclimacus\ModelAudit\ModelAuditServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra

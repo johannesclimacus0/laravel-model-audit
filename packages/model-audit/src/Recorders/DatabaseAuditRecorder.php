@@ -1,13 +1,13 @@
 <?php
 
-namespace Local\ModelAudit\Recorders;
+namespace Johannesclimacus\ModelAudit\Recorders;
 
 use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
-use Local\ModelAudit\Contracts\AuditChainWriter;
-use Local\ModelAudit\Contracts\AuditRecorder;
-use Local\ModelAudit\DTO\AuditEntryData;
-use Local\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\Contracts\AuditChainWriter;
+use Johannesclimacus\ModelAudit\Contracts\AuditRecorder;
+use Johannesclimacus\ModelAudit\DTO\AuditEntryData;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
 
 class DatabaseAuditRecorder implements AuditRecorder
 {

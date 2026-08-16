@@ -1,12 +1,12 @@
 <?php
 
-namespace Local\ModelAudit\Observers;
+namespace Johannesclimacus\ModelAudit\Observers;
 
 use Illuminate\Database\Eloquent\Model;
-use Local\ModelAudit\Contracts\AuditAttributeFilter;
-use Local\ModelAudit\Contracts\AuditLogger;
-use Local\ModelAudit\Contracts\AuditValueMasker;
-use Local\ModelAudit\Enums\ModelEvent;
+use Johannesclimacus\ModelAudit\Contracts\AuditAttributeFilter;
+use Johannesclimacus\ModelAudit\Contracts\AuditLogger;
+use Johannesclimacus\ModelAudit\Contracts\AuditValueMasker;
+use Johannesclimacus\ModelAudit\Enums\ModelEvent;
 
 class AuditableObserver
 {

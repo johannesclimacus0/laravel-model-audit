@@ -1,11 +1,11 @@
 <?php
 
-namespace Local\ModelAudit\DTO;
+namespace Johannesclimacus\ModelAudit\DTO;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
-use Local\ModelAudit\Enums\ModelEvent;
+use Johannesclimacus\ModelAudit\Enums\ModelEvent;
 
 class AuditEntryData
 {

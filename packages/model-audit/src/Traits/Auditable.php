@@ -1,10 +1,10 @@
 <?php
 
-namespace Local\ModelAudit\Traits;
+namespace Johannesclimacus\ModelAudit\Traits;
 
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Local\ModelAudit\Models\AuditEntry;
-use Local\ModelAudit\Observers\AuditableObserver;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\Observers\AuditableObserver;
 
 trait Auditable
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Feature;
+namespace Johannesclimacus\ModelAudit\Tests\Feature;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Local\ModelAudit\Models\AuditChainState;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Models\AuditChainState;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class AuditChainStateTest extends TestCase
 {

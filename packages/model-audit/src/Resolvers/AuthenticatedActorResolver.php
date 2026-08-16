@@ -1,10 +1,10 @@
 <?php
 
-namespace Local\ModelAudit\Resolvers;
+namespace Johannesclimacus\ModelAudit\Resolvers;
 
 use Illuminate\Contracts\Auth\Factory as AuthFactory;
 use Illuminate\Database\Eloquent\Model;
-use Local\ModelAudit\Contracts\ActorResolver;
+use Johannesclimacus\ModelAudit\Contracts\ActorResolver;
 
 class AuthenticatedActorResolver implements ActorResolver
 {

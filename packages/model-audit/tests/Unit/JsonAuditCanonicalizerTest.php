@@ -1,8 +1,8 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Unit;
+namespace Johannesclimacus\ModelAudit\Tests\Unit;
 
-use Local\ModelAudit\Canonicalization\JsonAuditCanonicalizer;
+use Johannesclimacus\ModelAudit\Canonicalization\JsonAuditCanonicalizer;
 use PHPUnit\Framework\TestCase;
 
 class JsonAuditCanonicalizerTest extends TestCase

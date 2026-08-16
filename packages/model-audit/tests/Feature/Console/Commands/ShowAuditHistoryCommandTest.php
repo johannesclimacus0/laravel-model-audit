@@ -1,14 +1,14 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Feature\Console\Commands;
+namespace Johannesclimacus\ModelAudit\Tests\Feature\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 use JsonException;
-use Local\ModelAudit\Models\AuditEntry;
-use Local\ModelAudit\Tests\Support\TestModel;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\Tests\Support\TestModel;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class ShowAuditHistoryCommandTest extends TestCase
 {

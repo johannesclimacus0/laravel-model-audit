@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Local\ModelAudit\Http\Controllers\AuditController;
-use Local\ModelAudit\Http\Middleware\AuthorizeModelAudit;
+use Johannesclimacus\ModelAudit\Http\Controllers\AuditController;
+use Johannesclimacus\ModelAudit\Http\Middleware\AuthorizeModelAudit;
 
 $middleware = array_merge(
     (array) config('model-audit.ui.middleware', ['web']),

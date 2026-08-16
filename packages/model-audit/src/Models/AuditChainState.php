@@ -1,6 +1,6 @@
 <?php
 
-namespace Local\ModelAudit\Models;
+namespace Johannesclimacus\ModelAudit\Models;
 
 use Illuminate\Database\Eloquent\Attributes\DateFormat;
 use Illuminate\Database\Eloquent\Attributes\Fillable;

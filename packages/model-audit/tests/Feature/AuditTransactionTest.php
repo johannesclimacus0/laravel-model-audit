@@ -1,11 +1,11 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Feature;
+namespace Johannesclimacus\ModelAudit\Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
-use Local\ModelAudit\Tests\Support\TestModel;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Tests\Support\TestModel;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class AuditTransactionTest extends TestCase
 {

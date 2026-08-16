@@ -1,36 +1,36 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Feature;
+namespace Johannesclimacus\ModelAudit\Tests\Feature;
 
-use Local\ModelAudit\Canonicalization\JsonAuditCanonicalizer;
-use Local\ModelAudit\Chains\DatabaseAuditChainWriter;
-use Local\ModelAudit\Contracts\ActorResolver;
-use Local\ModelAudit\Contracts\AuditCanonicalizer;
-use Local\ModelAudit\Contracts\AuditChainFinder;
-use Local\ModelAudit\Contracts\AuditChainVerifier;
-use Local\ModelAudit\Contracts\AuditChainWriter;
-use Local\ModelAudit\Contracts\AuditHasher;
-use Local\ModelAudit\Contracts\AuditHashGenerator;
-use Local\ModelAudit\Contracts\AuditHistoryReader;
-use Local\ModelAudit\Contracts\AuditLogReader;
-use Local\ModelAudit\Contracts\AuditPayloadBuilder;
-use Local\ModelAudit\Contracts\AuditStatusProvider;
-use Local\ModelAudit\Contracts\IpAddressResolver;
-use Local\ModelAudit\Contracts\RequestIdResolver;
-use Local\ModelAudit\Contracts\UserAgentResolver;
-use Local\ModelAudit\Hashing\DefaultAuditHashGenerator;
-use Local\ModelAudit\Hashing\Sha256AuditHasher;
-use Local\ModelAudit\History\DatabaseAuditHistoryReader;
-use Local\ModelAudit\History\DatabaseAuditLogReader;
-use Local\ModelAudit\Payloads\DefaultAuditPayloadBuilder;
-use Local\ModelAudit\Resolvers\AuthenticatedActorResolver;
-use Local\ModelAudit\Resolvers\RequestIpAddressResolver;
-use Local\ModelAudit\Resolvers\RequestUserAgentResolver;
-use Local\ModelAudit\Resolvers\UuidRequestIdResolver;
-use Local\ModelAudit\Status\DatabaseAuditStatusProvider;
-use Local\ModelAudit\Tests\TestCase;
-use Local\ModelAudit\Verification\DatabaseAuditChainFinder;
-use Local\ModelAudit\Verification\DatabaseAuditChainVerifier;
+use Johannesclimacus\ModelAudit\Canonicalization\JsonAuditCanonicalizer;
+use Johannesclimacus\ModelAudit\Chains\DatabaseAuditChainWriter;
+use Johannesclimacus\ModelAudit\Contracts\ActorResolver;
+use Johannesclimacus\ModelAudit\Contracts\AuditCanonicalizer;
+use Johannesclimacus\ModelAudit\Contracts\AuditChainFinder;
+use Johannesclimacus\ModelAudit\Contracts\AuditChainVerifier;
+use Johannesclimacus\ModelAudit\Contracts\AuditChainWriter;
+use Johannesclimacus\ModelAudit\Contracts\AuditHasher;
+use Johannesclimacus\ModelAudit\Contracts\AuditHashGenerator;
+use Johannesclimacus\ModelAudit\Contracts\AuditHistoryReader;
+use Johannesclimacus\ModelAudit\Contracts\AuditLogReader;
+use Johannesclimacus\ModelAudit\Contracts\AuditPayloadBuilder;
+use Johannesclimacus\ModelAudit\Contracts\AuditStatusProvider;
+use Johannesclimacus\ModelAudit\Contracts\IpAddressResolver;
+use Johannesclimacus\ModelAudit\Contracts\RequestIdResolver;
+use Johannesclimacus\ModelAudit\Contracts\UserAgentResolver;
+use Johannesclimacus\ModelAudit\Hashing\DefaultAuditHashGenerator;
+use Johannesclimacus\ModelAudit\Hashing\Sha256AuditHasher;
+use Johannesclimacus\ModelAudit\History\DatabaseAuditHistoryReader;
+use Johannesclimacus\ModelAudit\History\DatabaseAuditLogReader;
+use Johannesclimacus\ModelAudit\Payloads\DefaultAuditPayloadBuilder;
+use Johannesclimacus\ModelAudit\Resolvers\AuthenticatedActorResolver;
+use Johannesclimacus\ModelAudit\Resolvers\RequestIpAddressResolver;
+use Johannesclimacus\ModelAudit\Resolvers\RequestUserAgentResolver;
+use Johannesclimacus\ModelAudit\Resolvers\UuidRequestIdResolver;
+use Johannesclimacus\ModelAudit\Status\DatabaseAuditStatusProvider;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Verification\DatabaseAuditChainFinder;
+use Johannesclimacus\ModelAudit\Verification\DatabaseAuditChainVerifier;
 
 class ModelAuditServiceProviderTest extends TestCase
 {

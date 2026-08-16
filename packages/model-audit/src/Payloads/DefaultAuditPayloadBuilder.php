@@ -1,10 +1,10 @@
 <?php
 
-namespace Local\ModelAudit\Payloads;
+namespace Johannesclimacus\ModelAudit\Payloads;
 
-use Local\ModelAudit\Contracts\AuditPayloadBuilder;
-use Local\ModelAudit\DTO\AuditEntryData;
-use Local\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\Contracts\AuditPayloadBuilder;
+use Johannesclimacus\ModelAudit\DTO\AuditEntryData;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
 
 class DefaultAuditPayloadBuilder implements AuditPayloadBuilder
 {

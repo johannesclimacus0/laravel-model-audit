@@ -1,9 +1,9 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Feature;
+namespace Johannesclimacus\ModelAudit\Tests\Feature;
 
-use Local\ModelAudit\Exceptions\AuditEntryIsImmutable;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Exceptions\AuditEntryIsImmutable;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class LocalisationTest extends TestCase
 {

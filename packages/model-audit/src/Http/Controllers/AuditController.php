@@ -1,16 +1,16 @@
 <?php
 
-namespace Local\ModelAudit\Http\Controllers;
+namespace Johannesclimacus\ModelAudit\Http\Controllers;
 
 use Carbon\CarbonImmutable;
 use Illuminate\View\View;
-use Local\ModelAudit\Contracts\AuditChainVerifier;
-use Local\ModelAudit\Contracts\AuditHistoryReader;
-use Local\ModelAudit\Contracts\AuditLogReader;
-use Local\ModelAudit\DTO\AuditHistoryQuery;
-use Local\ModelAudit\DTO\AuditLogQuery;
-use Local\ModelAudit\Http\Requests\AuditIndexRequest;
-use Local\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\Contracts\AuditChainVerifier;
+use Johannesclimacus\ModelAudit\Contracts\AuditHistoryReader;
+use Johannesclimacus\ModelAudit\Contracts\AuditLogReader;
+use Johannesclimacus\ModelAudit\DTO\AuditHistoryQuery;
+use Johannesclimacus\ModelAudit\DTO\AuditLogQuery;
+use Johannesclimacus\ModelAudit\Http\Requests\AuditIndexRequest;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
 
 class AuditController
 {

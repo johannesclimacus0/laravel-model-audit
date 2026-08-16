@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-use Local\ModelAudit\Contracts\IpAddressResolver;
+use Johannesclimacus\ModelAudit\Contracts\IpAddressResolver;
 
 class {{ class }} implements IpAddressResolver
 {

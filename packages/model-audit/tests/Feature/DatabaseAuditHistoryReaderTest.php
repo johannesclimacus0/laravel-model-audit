@@ -1,13 +1,13 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Feature;
+namespace Johannesclimacus\ModelAudit\Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Local\ModelAudit\DTO\AuditHistoryQuery;
-use Local\ModelAudit\History\DatabaseAuditHistoryReader;
-use Local\ModelAudit\Models\AuditEntry;
-use Local\ModelAudit\Tests\Support\TestModel;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\DTO\AuditHistoryQuery;
+use Johannesclimacus\ModelAudit\History\DatabaseAuditHistoryReader;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\Tests\Support\TestModel;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class DatabaseAuditHistoryReaderTest extends TestCase
 {

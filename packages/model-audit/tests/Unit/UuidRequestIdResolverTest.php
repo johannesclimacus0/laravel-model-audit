@@ -1,10 +1,10 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Unit;
+namespace Johannesclimacus\ModelAudit\Tests\Unit;
 
 use Illuminate\Support\Str;
-use Local\ModelAudit\Resolvers\UuidRequestIdResolver;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Resolvers\UuidRequestIdResolver;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class UuidRequestIdResolverTest extends TestCase
 {

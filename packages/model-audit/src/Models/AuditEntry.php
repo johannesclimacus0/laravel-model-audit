@@ -1,13 +1,13 @@
 <?php
 
-namespace Local\ModelAudit\Models;
+namespace Johannesclimacus\ModelAudit\Models;
 
 use Illuminate\Database\Eloquent\Attributes\DateFormat;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Local\ModelAudit\Exceptions\AuditEntryIsImmutable;
+use Johannesclimacus\ModelAudit\Exceptions\AuditEntryIsImmutable;
 
 #[Fillable([
     'subject_type',

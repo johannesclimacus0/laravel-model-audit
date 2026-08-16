@@ -1,10 +1,10 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Unit;
+namespace Johannesclimacus\ModelAudit\Tests\Unit;
 
 use Illuminate\Http\Request;
-use Local\ModelAudit\Resolvers\RequestIpAddressResolver;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Resolvers\RequestIpAddressResolver;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class RequestIpAddressResolverTest extends TestCase
 {

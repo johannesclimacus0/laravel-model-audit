@@ -1,11 +1,11 @@
 <?php
 
-namespace Local\ModelAudit\Status;
+namespace Johannesclimacus\ModelAudit\Status;
 
-use Local\ModelAudit\Contracts\AuditStatusProvider;
-use Local\ModelAudit\DTO\AuditStatus;
-use Local\ModelAudit\Models\AuditChainState;
-use Local\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\Contracts\AuditStatusProvider;
+use Johannesclimacus\ModelAudit\DTO\AuditStatus;
+use Johannesclimacus\ModelAudit\Models\AuditChainState;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
 
 class DatabaseAuditStatusProvider implements AuditStatusProvider
 {

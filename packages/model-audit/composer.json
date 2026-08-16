@@ -1,5 +1,5 @@
 {
-    "name": "local/model-audit",
+    "name": "johannesclimacus/model-audit",
     "description": "Laravel package for recording model changes.",
     "type": "library",
     "license": "MIT",
@@ -13,12 +13,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Local\\ModelAudit\\": "src/"
+            "Johannesclimacus\\ModelAudit\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Local\\ModelAudit\\Tests\\": "tests/"
+            "Johannesclimacus\\ModelAudit\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -27,7 +27,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Local\\ModelAudit\\ModelAuditServiceProvider"
+                "Johannesclimacus\\ModelAudit\\ModelAuditServiceProvider"
             ]
         }
     }

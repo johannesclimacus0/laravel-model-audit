@@ -1,8 +1,8 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Feature\Console\Generators;
+namespace Johannesclimacus\ModelAudit\Tests\Feature\Console\Generators;
 
-use Local\ModelAudit\Tests\Support\GeneratorTestCase;
+use Johannesclimacus\ModelAudit\Tests\Support\GeneratorTestCase;
 
 class MakeAuditUserAgentResolverCommandTest extends GeneratorTestCase
 {

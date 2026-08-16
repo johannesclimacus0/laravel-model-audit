@@ -1,8 +1,8 @@
 <?php
 
-namespace Local\ModelAudit\Contracts;
+namespace Johannesclimacus\ModelAudit\Contracts;
 
-use Local\ModelAudit\DTO\AuditChainIdentifier;
+use Johannesclimacus\ModelAudit\DTO\AuditChainIdentifier;
 
 interface AuditChainFinder
 {

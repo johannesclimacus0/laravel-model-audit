@@ -1,15 +1,15 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Unit;
+namespace Johannesclimacus\ModelAudit\Tests\Unit;
 
-use Local\ModelAudit\Contracts\AuditCanonicalizer;
-use Local\ModelAudit\Contracts\AuditHasher;
-use Local\ModelAudit\Contracts\AuditPayloadBuilder;
-use Local\ModelAudit\DTO\AuditEntryData;
-use Local\ModelAudit\Enums\ModelEvent;
-use Local\ModelAudit\Hashing\DefaultAuditHashGenerator;
-use Local\ModelAudit\Tests\Support\TestModel;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Contracts\AuditCanonicalizer;
+use Johannesclimacus\ModelAudit\Contracts\AuditHasher;
+use Johannesclimacus\ModelAudit\Contracts\AuditPayloadBuilder;
+use Johannesclimacus\ModelAudit\DTO\AuditEntryData;
+use Johannesclimacus\ModelAudit\Enums\ModelEvent;
+use Johannesclimacus\ModelAudit\Hashing\DefaultAuditHashGenerator;
+use Johannesclimacus\ModelAudit\Tests\Support\TestModel;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 use Mockery;
 
 class DefaultAuditHashGeneratorTest extends TestCase

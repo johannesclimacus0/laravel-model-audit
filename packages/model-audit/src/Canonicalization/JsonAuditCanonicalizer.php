@@ -1,8 +1,8 @@
 <?php
 
-namespace Local\ModelAudit\Canonicalization;
+namespace Johannesclimacus\ModelAudit\Canonicalization;
 
-use Local\ModelAudit\Contracts\AuditCanonicalizer;
+use Johannesclimacus\ModelAudit\Contracts\AuditCanonicalizer;
 
 class JsonAuditCanonicalizer implements AuditCanonicalizer
 {

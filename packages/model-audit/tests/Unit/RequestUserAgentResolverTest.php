@@ -1,10 +1,10 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Unit;
+namespace Johannesclimacus\ModelAudit\Tests\Unit;
 
 use Illuminate\Http\Request;
-use Local\ModelAudit\Resolvers\RequestUserAgentResolver;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Resolvers\RequestUserAgentResolver;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class RequestUserAgentResolverTest extends TestCase
 {

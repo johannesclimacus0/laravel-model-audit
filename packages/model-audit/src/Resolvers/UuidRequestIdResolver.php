@@ -1,9 +1,9 @@
 <?php
 
-namespace Local\ModelAudit\Resolvers;
+namespace Johannesclimacus\ModelAudit\Resolvers;
 
 use Illuminate\Support\Str;
-use Local\ModelAudit\Contracts\RequestIdResolver;
+use Johannesclimacus\ModelAudit\Contracts\RequestIdResolver;
 
 class UuidRequestIdResolver implements RequestIdResolver
 {

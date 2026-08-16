@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "26e8e98006763b927ba83bc43a8812d6",
+    "content-hash": "c9aff7c2047662ff21dd950ca1458fa6",
     "packages": [
         {
             "name": "brick/math",
@@ -1058,6 +1058,53 @@
             "time": "2026-07-17T13:53:03+00:00"
         },
         {
+            "name": "johannesclimacus/model-audit",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/model-audit",
+                "reference": "3c44b3881120ce0ad18146beb71b16186056978f"
+            },
+            "require": {
+                "laravel/framework": "^13.0",
+                "php": "^8.3"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^11.0",
+                "phpunit/phpunit": "^12.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Johannesclimacus\\ModelAudit\\ModelAuditServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Johannesclimacus\\ModelAudit\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Johannesclimacus\\ModelAudit\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Laravel package for recording model changes.",
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "laravel/framework",
             "version": "v13.24.0",
             "source": {
@@ -2031,54 +2078,6 @@
                 }
             ],
             "time": "2026-03-08T20:05:35+00:00"
-        },
-        {
-            "name": "local/model-audit",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "packages/model-audit",
-                "reference": "e4169cc98bcf8a61eee9092f7f57a5dbe4db1b04"
-            },
-            "require": {
-                "illuminate/database": "^13.0",
-                "illuminate/support": "^13.0",
-                "php": "^8.3"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^11.0",
-                "phpunit/phpunit": "^12.5"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Local\\ModelAudit\\ModelAuditServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Local\\ModelAudit\\": "src/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Local\\ModelAudit\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "phpunit"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "description": "Laravel package for recording model changes.",
-            "transport-options": {
-                "relative": true
-            }
         },
         {
             "name": "monolog/monolog",
@@ -8769,7 +8768,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "local/model-audit": 20
+        "johannesclimacus/model-audit": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

@@ -1,6 +1,6 @@
 <?php
 
-namespace Local\ModelAudit\Console\Generators;
+namespace Johannesclimacus\ModelAudit\Console\Generators;
 
 use Illuminate\Console\GeneratorCommand;
 

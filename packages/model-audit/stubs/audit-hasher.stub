@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-use Local\ModelAudit\Contracts\AuditHasher;
+use Johannesclimacus\ModelAudit\Contracts\AuditHasher;
 
 class {{ class }} implements AuditHasher
 {

@@ -1,15 +1,15 @@
 <?php
 
-namespace Local\ModelAudit\Console\Commands;
+namespace Johannesclimacus\ModelAudit\Console\Commands;
 
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Collection;
 use JsonException;
-use Local\ModelAudit\Contracts\AuditHistoryReader;
-use Local\ModelAudit\DTO\AuditHistoryQuery;
-use Local\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\Contracts\AuditHistoryReader;
+use Johannesclimacus\ModelAudit\DTO\AuditHistoryQuery;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
 
 #[Signature('model-audit:show
     {subjectType : Stored morph type}

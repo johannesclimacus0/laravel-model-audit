@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-use Local\ModelAudit\Contracts\UserAgentResolver;
+use Johannesclimacus\ModelAudit\Contracts\UserAgentResolver;
 
 class {{ class }} implements UserAgentResolver
 {

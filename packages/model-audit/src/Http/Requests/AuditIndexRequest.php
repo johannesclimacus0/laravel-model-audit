@@ -1,6 +1,6 @@
 <?php
 
-namespace Local\ModelAudit\Http\Requests;
+namespace Johannesclimacus\ModelAudit\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

@@ -1,15 +1,15 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Feature\Http\Controllers;
+namespace Johannesclimacus\ModelAudit\Tests\Feature\Http\Controllers;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
-use Local\ModelAudit\Contracts\AuditLogger;
-use Local\ModelAudit\Models\AuditEntry;
-use Local\ModelAudit\Tests\Support\TestModel;
-use Local\ModelAudit\Tests\Support\TestUser;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Contracts\AuditLogger;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\Tests\Support\TestModel;
+use Johannesclimacus\ModelAudit\Tests\Support\TestUser;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class AuditControllerTest extends TestCase
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Local\ModelAudit\Masking;
+namespace Johannesclimacus\ModelAudit\Masking;
 
 use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
-use Local\ModelAudit\Contracts\AuditValueMasker;
+use Johannesclimacus\ModelAudit\Contracts\AuditValueMasker;
 
 class DefaultAuditValueMasker implements AuditValueMasker
 {

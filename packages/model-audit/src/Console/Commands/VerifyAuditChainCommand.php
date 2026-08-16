@@ -1,11 +1,11 @@
 <?php
 
-namespace Local\ModelAudit\Console\Commands;
+namespace Johannesclimacus\ModelAudit\Console\Commands;
 
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
-use Local\ModelAudit\Contracts\AuditChainVerifier;
+use Johannesclimacus\ModelAudit\Contracts\AuditChainVerifier;
 
 #[Signature('model-audit:verify
     {subjectType : Stored morph type}

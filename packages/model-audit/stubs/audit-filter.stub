@@ -3,7 +3,7 @@
 namespace {{ namespace }};
 
 use Illuminate\Database\Eloquent\Model;
-use Local\ModelAudit\Contracts\AuditAttributeFilter;
+use Johannesclimacus\ModelAudit\Contracts\AuditAttributeFilter;
 
 class {{ class }} implements AuditAttributeFilter
 {

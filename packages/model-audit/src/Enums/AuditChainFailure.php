@@ -1,6 +1,6 @@
 <?php
 
-namespace Local\ModelAudit\Enums;
+namespace Johannesclimacus\ModelAudit\Enums;
 
 enum AuditChainFailure: string
 {

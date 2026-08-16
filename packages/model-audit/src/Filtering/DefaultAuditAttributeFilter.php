@@ -1,10 +1,10 @@
 <?php
 
-namespace Local\ModelAudit\Filtering;
+namespace Johannesclimacus\ModelAudit\Filtering;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
-use Local\ModelAudit\Contracts\AuditAttributeFilter;
+use Johannesclimacus\ModelAudit\Contracts\AuditAttributeFilter;
 
 class DefaultAuditAttributeFilter implements AuditAttributeFilter
 {

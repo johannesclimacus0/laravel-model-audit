@@ -1,9 +1,9 @@
 <?php
 
-namespace Local\ModelAudit\Resolvers;
+namespace Johannesclimacus\ModelAudit\Resolvers;
 
 use Illuminate\Http\Request;
-use Local\ModelAudit\Contracts\IpAddressResolver;
+use Johannesclimacus\ModelAudit\Contracts\IpAddressResolver;
 
 class RequestIpAddressResolver implements IpAddressResolver
 {

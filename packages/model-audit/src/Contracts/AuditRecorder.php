@@ -1,9 +1,9 @@
 <?php
 
-namespace Local\ModelAudit\Contracts;
+namespace Johannesclimacus\ModelAudit\Contracts;
 
-use Local\ModelAudit\DTO\AuditEntryData;
-use Local\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\DTO\AuditEntryData;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
 
 interface AuditRecorder
 {

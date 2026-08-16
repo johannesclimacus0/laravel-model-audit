@@ -1,10 +1,10 @@
 <?php
 
-namespace Local\ModelAudit\Contracts;
+namespace Johannesclimacus\ModelAudit\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
-use Local\ModelAudit\DTO\AuditHistoryQuery;
-use Local\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\DTO\AuditHistoryQuery;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
 
 interface AuditHistoryReader
 {

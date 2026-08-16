@@ -1,10 +1,10 @@
 <?php
 
-namespace Local\ModelAudit\Contracts;
+namespace Johannesclimacus\ModelAudit\Contracts;
 
 use Illuminate\Database\Eloquent\Model;
-use Local\ModelAudit\Enums\ModelEvent;
-use Local\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\Enums\ModelEvent;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
 
 interface AuditLogger
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Feature\Http;
+namespace Johannesclimacus\ModelAudit\Tests\Feature\Http;
 
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class DefaultAuditAuthorizationTest extends TestCase
 {

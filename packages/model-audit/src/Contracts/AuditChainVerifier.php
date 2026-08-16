@@ -1,8 +1,8 @@
 <?php
 
-namespace Local\ModelAudit\Contracts;
+namespace Johannesclimacus\ModelAudit\Contracts;
 
-use Local\ModelAudit\DTO\AuditChainVerificationResult;
+use Johannesclimacus\ModelAudit\DTO\AuditChainVerificationResult;
 
 interface AuditChainVerifier
 {

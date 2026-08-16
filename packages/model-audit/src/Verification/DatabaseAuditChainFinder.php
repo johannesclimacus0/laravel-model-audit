@@ -1,11 +1,11 @@
 <?php
 
-namespace Local\ModelAudit\Verification;
+namespace Johannesclimacus\ModelAudit\Verification;
 
-use Local\ModelAudit\Contracts\AuditChainFinder;
-use Local\ModelAudit\DTO\AuditChainIdentifier;
-use Local\ModelAudit\Models\AuditChainState;
-use Local\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\Contracts\AuditChainFinder;
+use Johannesclimacus\ModelAudit\DTO\AuditChainIdentifier;
+use Johannesclimacus\ModelAudit\Models\AuditChainState;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
 
 class DatabaseAuditChainFinder implements AuditChainFinder
 {

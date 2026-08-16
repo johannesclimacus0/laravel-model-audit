@@ -1,10 +1,10 @@
 <?php
 
-namespace Local\ModelAudit\Contracts;
+namespace Johannesclimacus\ModelAudit\Contracts;
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Local\ModelAudit\DTO\AuditLogQuery;
-use Local\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\DTO\AuditLogQuery;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
 
 interface AuditLogReader
 {

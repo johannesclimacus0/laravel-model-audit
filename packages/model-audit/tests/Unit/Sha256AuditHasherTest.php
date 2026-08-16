@@ -1,8 +1,8 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Unit;
+namespace Johannesclimacus\ModelAudit\Tests\Unit;
 
-use Local\ModelAudit\Hashing\Sha256AuditHasher;
+use Johannesclimacus\ModelAudit\Hashing\Sha256AuditHasher;
 use PHPUnit\Framework\TestCase;
 
 class Sha256AuditHasherTest extends TestCase

@@ -1,8 +1,8 @@
 <?php
 
-namespace Local\ModelAudit\Hashing;
+namespace Johannesclimacus\ModelAudit\Hashing;
 
-use Local\ModelAudit\Contracts\AuditHasher;
+use Johannesclimacus\ModelAudit\Contracts\AuditHasher;
 
 class Sha256AuditHasher implements AuditHasher
 {

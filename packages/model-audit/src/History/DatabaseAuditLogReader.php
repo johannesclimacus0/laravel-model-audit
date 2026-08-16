@@ -1,11 +1,11 @@
 <?php
 
-namespace Local\ModelAudit\History;
+namespace Johannesclimacus\ModelAudit\History;
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Local\ModelAudit\Contracts\AuditLogReader;
-use Local\ModelAudit\DTO\AuditLogQuery;
-use Local\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\Contracts\AuditLogReader;
+use Johannesclimacus\ModelAudit\DTO\AuditLogQuery;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
 
 class DatabaseAuditLogReader implements AuditLogReader
 {

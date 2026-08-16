@@ -1,13 +1,13 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Unit;
+namespace Johannesclimacus\ModelAudit\Tests\Unit;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
-use Local\ModelAudit\DTO\AuditEntryData;
-use Local\ModelAudit\Enums\ModelEvent;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\DTO\AuditEntryData;
+use Johannesclimacus\ModelAudit\Enums\ModelEvent;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class AuditEntryDataTest extends TestCase
 {

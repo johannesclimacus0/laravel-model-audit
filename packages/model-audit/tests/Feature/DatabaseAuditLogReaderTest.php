@@ -1,13 +1,13 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Feature;
+namespace Johannesclimacus\ModelAudit\Tests\Feature;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Local\ModelAudit\DTO\AuditLogQuery;
-use Local\ModelAudit\History\DatabaseAuditLogReader;
-use Local\ModelAudit\Models\AuditEntry;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\DTO\AuditLogQuery;
+use Johannesclimacus\ModelAudit\History\DatabaseAuditLogReader;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class DatabaseAuditLogReaderTest extends TestCase
 {

@@ -18,7 +18,7 @@
         "php": "^8.3",
         "laravel/framework": "^13.8",
         "laravel/tinker": "^3.0",
-        "local/model-audit": "@dev"
+        "johannesclimacus/model-audit": "@dev"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.7",

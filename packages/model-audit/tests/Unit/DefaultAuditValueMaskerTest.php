@@ -1,11 +1,11 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Unit;
+namespace Johannesclimacus\ModelAudit\Tests\Unit;
 
 use InvalidArgumentException;
-use Local\ModelAudit\Masking\DefaultAuditValueMasker;
-use Local\ModelAudit\Tests\Support\TestModel;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Masking\DefaultAuditValueMasker;
+use Johannesclimacus\ModelAudit\Tests\Support\TestModel;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class DefaultAuditValueMaskerTest extends TestCase
 {

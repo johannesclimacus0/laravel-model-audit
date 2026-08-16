@@ -1,6 +1,6 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Support;
+namespace Johannesclimacus\ModelAudit\Tests\Support;
 
 class ExcludedFieldsModel extends TestModel
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Support;
+namespace Johannesclimacus\ModelAudit\Tests\Support;
 
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Foundation\Auth\User;

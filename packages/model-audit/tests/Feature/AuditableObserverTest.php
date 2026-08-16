@@ -1,17 +1,17 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Feature;
+namespace Johannesclimacus\ModelAudit\Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Local\ModelAudit\Models\AuditEntry;
-use Local\ModelAudit\Tests\Support\ExcludedFieldsModel;
-use Local\ModelAudit\Tests\Support\MaskedModel;
-use Local\ModelAudit\Tests\Support\SoftDeletedModel;
-use Local\ModelAudit\Tests\Support\TestModel;
-use Local\ModelAudit\Tests\Support\TestUser;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\Tests\Support\ExcludedFieldsModel;
+use Johannesclimacus\ModelAudit\Tests\Support\MaskedModel;
+use Johannesclimacus\ModelAudit\Tests\Support\SoftDeletedModel;
+use Johannesclimacus\ModelAudit\Tests\Support\TestModel;
+use Johannesclimacus\ModelAudit\Tests\Support\TestUser;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class AuditableObserverTest extends TestCase
 {

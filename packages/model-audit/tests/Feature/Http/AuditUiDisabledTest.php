@@ -1,9 +1,9 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Feature\Http;
+namespace Johannesclimacus\ModelAudit\Tests\Feature\Http;
 
 use Illuminate\Support\Facades\Route;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class AuditUiDisabledTest extends TestCase
 {

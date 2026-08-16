@@ -3,7 +3,7 @@
 namespace {{ namespace }};
 
 use Illuminate\Database\Eloquent\Model;
-use Local\ModelAudit\Contracts\ActorResolver;
+use Johannesclimacus\ModelAudit\Contracts\ActorResolver;
 
 class {{ class }} implements ActorResolver
 {

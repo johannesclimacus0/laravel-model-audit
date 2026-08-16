@@ -1,12 +1,12 @@
 <?php
 
-namespace Local\ModelAudit\Console\Commands;
+namespace Johannesclimacus\ModelAudit\Console\Commands;
 
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
-use Local\ModelAudit\Contracts\AuditChainFinder;
-use Local\ModelAudit\Contracts\AuditChainVerifier;
+use Johannesclimacus\ModelAudit\Contracts\AuditChainFinder;
+use Johannesclimacus\ModelAudit\Contracts\AuditChainVerifier;
 
 #[Signature('model-audit:verify-all')]
 #[Description('Verify all audit chains')]

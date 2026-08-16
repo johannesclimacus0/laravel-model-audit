@@ -1,15 +1,15 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Feature;
+namespace Johannesclimacus\ModelAudit\Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Local\ModelAudit\Contracts\AuditChainVerifier;
-use Local\ModelAudit\DTO\AuditChainVerificationResult;
-use Local\ModelAudit\Enums\AuditChainFailure;
-use Local\ModelAudit\Models\AuditChainState;
-use Local\ModelAudit\Models\AuditEntry;
-use Local\ModelAudit\Tests\Support\TestModel;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Contracts\AuditChainVerifier;
+use Johannesclimacus\ModelAudit\DTO\AuditChainVerificationResult;
+use Johannesclimacus\ModelAudit\Enums\AuditChainFailure;
+use Johannesclimacus\ModelAudit\Models\AuditChainState;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\Tests\Support\TestModel;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class AuditChainVerifierTest extends TestCase
 {

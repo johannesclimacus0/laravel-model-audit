@@ -1,10 +1,10 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Unit;
+namespace Johannesclimacus\ModelAudit\Tests\Unit;
 
 use Carbon\CarbonImmutable;
 use InvalidArgumentException;
-use Local\ModelAudit\DTO\AuditLogQuery;
+use Johannesclimacus\ModelAudit\DTO\AuditLogQuery;
 use PHPUnit\Framework\TestCase;
 
 class AuditLogQueryTest extends TestCase

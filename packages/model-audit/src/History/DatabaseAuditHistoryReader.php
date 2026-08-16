@@ -1,11 +1,11 @@
 <?php
 
-namespace Local\ModelAudit\History;
+namespace Johannesclimacus\ModelAudit\History;
 
 use Illuminate\Database\Eloquent\Collection;
-use Local\ModelAudit\Contracts\AuditHistoryReader;
-use Local\ModelAudit\DTO\AuditHistoryQuery;
-use Local\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\Contracts\AuditHistoryReader;
+use Johannesclimacus\ModelAudit\DTO\AuditHistoryQuery;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
 
 class DatabaseAuditHistoryReader implements AuditHistoryReader
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Local\ModelAudit\DTO;
+namespace Johannesclimacus\ModelAudit\DTO;
 
-use Local\ModelAudit\Enums\AuditChainFailure;
+use Johannesclimacus\ModelAudit\Enums\AuditChainFailure;
 
 class AuditChainVerificationResult
 {

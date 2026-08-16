@@ -1,12 +1,12 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Unit;
+namespace Johannesclimacus\ModelAudit\Tests\Unit;
 
 use Illuminate\Contracts\Auth\Factory as AuthFactory;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Foundation\Auth\User;
-use Local\ModelAudit\Resolvers\AuthenticatedActorResolver;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Resolvers\AuthenticatedActorResolver;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 use Mockery;
 
 class AuthenticatedActorResolverTest extends TestCase

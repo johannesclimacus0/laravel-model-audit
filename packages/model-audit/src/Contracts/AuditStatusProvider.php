@@ -1,8 +1,8 @@
 <?php
 
-namespace Local\ModelAudit\Contracts;
+namespace Johannesclimacus\ModelAudit\Contracts;
 
-use Local\ModelAudit\DTO\AuditStatus;
+use Johannesclimacus\ModelAudit\DTO\AuditStatus;
 
 interface AuditStatusProvider
 {

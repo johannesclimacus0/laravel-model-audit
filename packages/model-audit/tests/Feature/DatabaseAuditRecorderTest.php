@@ -1,17 +1,17 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Feature;
+namespace Johannesclimacus\ModelAudit\Tests\Feature;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use InvalidArgumentException;
-use Local\ModelAudit\Contracts\AuditRecorder;
-use Local\ModelAudit\DTO\AuditEntryData;
-use Local\ModelAudit\Enums\ModelEvent;
-use Local\ModelAudit\Models\AuditEntry;
-use Local\ModelAudit\Recorders\DatabaseAuditRecorder;
-use Local\ModelAudit\Tests\Support\TestModel;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Contracts\AuditRecorder;
+use Johannesclimacus\ModelAudit\DTO\AuditEntryData;
+use Johannesclimacus\ModelAudit\Enums\ModelEvent;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\Recorders\DatabaseAuditRecorder;
+use Johannesclimacus\ModelAudit\Tests\Support\TestModel;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class DatabaseAuditRecorderTest extends TestCase
 {

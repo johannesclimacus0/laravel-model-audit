@@ -1,11 +1,11 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Unit;
+namespace Johannesclimacus\ModelAudit\Tests\Unit;
 
-use Local\ModelAudit\Filtering\DefaultAuditAttributeFilter;
-use Local\ModelAudit\Tests\Support\SoftDeletedModel;
-use Local\ModelAudit\Tests\Support\TestModel;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Filtering\DefaultAuditAttributeFilter;
+use Johannesclimacus\ModelAudit\Tests\Support\SoftDeletedModel;
+use Johannesclimacus\ModelAudit\Tests\Support\TestModel;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class DefaultAuditAttributeFilterTest extends TestCase
 {

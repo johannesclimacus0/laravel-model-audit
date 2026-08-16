@@ -1,6 +1,6 @@
 <?php
 
-namespace Local\ModelAudit\Contracts;
+namespace Johannesclimacus\ModelAudit\Contracts;
 
 interface RequestIdResolver
 {

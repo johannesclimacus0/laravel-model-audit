@@ -1,10 +1,10 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Feature\Http\Requests;
+namespace Johannesclimacus\ModelAudit\Tests\Feature\Http\Requests;
 
 use Illuminate\Support\Facades\Validator;
-use Local\ModelAudit\Http\Requests\AuditIndexRequest;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Http\Requests\AuditIndexRequest;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class AuditIndexRequestTest extends TestCase
 {

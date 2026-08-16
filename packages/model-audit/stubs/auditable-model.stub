@@ -3,7 +3,7 @@
 namespace {{ namespace }};
 
 use Illuminate\Database\Eloquent\Model;
-use Local\ModelAudit\Traits\Auditable;
+use Johannesclimacus\ModelAudit\Traits\Auditable;
 
 class {{ class }} extends Model
 {

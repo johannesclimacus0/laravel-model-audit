@@ -1,13 +1,13 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Unit;
+namespace Johannesclimacus\ModelAudit\Tests\Unit;
 
 use Carbon\CarbonImmutable;
-use Local\ModelAudit\DTO\AuditEntryData;
-use Local\ModelAudit\Enums\ModelEvent;
-use Local\ModelAudit\Payloads\DefaultAuditPayloadBuilder;
-use Local\ModelAudit\Tests\Support\TestModel;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\DTO\AuditEntryData;
+use Johannesclimacus\ModelAudit\Enums\ModelEvent;
+use Johannesclimacus\ModelAudit\Payloads\DefaultAuditPayloadBuilder;
+use Johannesclimacus\ModelAudit\Tests\Support\TestModel;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class DefaultAuditPayloadBuilderTest extends TestCase
 {

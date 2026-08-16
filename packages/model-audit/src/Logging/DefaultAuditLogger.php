@@ -1,17 +1,17 @@
 <?php
 
-namespace Local\ModelAudit\Logging;
+namespace Johannesclimacus\ModelAudit\Logging;
 
 use Illuminate\Database\Eloquent\Model;
-use Local\ModelAudit\Contracts\ActorResolver;
-use Local\ModelAudit\Contracts\AuditLogger;
-use Local\ModelAudit\Contracts\AuditRecorder;
-use Local\ModelAudit\Contracts\IpAddressResolver;
-use Local\ModelAudit\Contracts\RequestIdResolver;
-use Local\ModelAudit\Contracts\UserAgentResolver;
-use Local\ModelAudit\DTO\AuditEntryData;
-use Local\ModelAudit\Enums\ModelEvent;
-use Local\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\Contracts\ActorResolver;
+use Johannesclimacus\ModelAudit\Contracts\AuditLogger;
+use Johannesclimacus\ModelAudit\Contracts\AuditRecorder;
+use Johannesclimacus\ModelAudit\Contracts\IpAddressResolver;
+use Johannesclimacus\ModelAudit\Contracts\RequestIdResolver;
+use Johannesclimacus\ModelAudit\Contracts\UserAgentResolver;
+use Johannesclimacus\ModelAudit\DTO\AuditEntryData;
+use Johannesclimacus\ModelAudit\Enums\ModelEvent;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
 
 class DefaultAuditLogger implements AuditLogger
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Local\ModelAudit\Exceptions;
+namespace Johannesclimacus\ModelAudit\Exceptions;
 
 use LogicException;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Local\ModelAudit\Resolvers;
+namespace Johannesclimacus\ModelAudit\Resolvers;
 
 use Illuminate\Http\Request;
-use Local\ModelAudit\Contracts\UserAgentResolver;
+use Johannesclimacus\ModelAudit\Contracts\UserAgentResolver;
 
 class RequestUserAgentResolver implements UserAgentResolver
 {

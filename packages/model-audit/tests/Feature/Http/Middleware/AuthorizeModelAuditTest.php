@@ -1,13 +1,13 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Feature\Http\Middleware;
+namespace Johannesclimacus\ModelAudit\Tests\Feature\Http\Middleware;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
-use Local\ModelAudit\Http\Middleware\AuthorizeModelAudit;
-use Local\ModelAudit\Tests\Support\TestUser;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\Http\Middleware\AuthorizeModelAudit;
+use Johannesclimacus\ModelAudit\Tests\Support\TestUser;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 
 class AuthorizeModelAuditTest extends TestCase
 {

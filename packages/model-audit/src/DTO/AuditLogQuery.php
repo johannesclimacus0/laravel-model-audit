@@ -1,6 +1,6 @@
 <?php
 
-namespace Local\ModelAudit\DTO;
+namespace Johannesclimacus\ModelAudit\DTO;
 
 use Carbon\CarbonImmutable;
 use InvalidArgumentException;

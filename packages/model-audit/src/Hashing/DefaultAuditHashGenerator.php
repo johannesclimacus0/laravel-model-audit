@@ -1,13 +1,13 @@
 <?php
 
-namespace Local\ModelAudit\Hashing;
+namespace Johannesclimacus\ModelAudit\Hashing;
 
-use Local\ModelAudit\Contracts\AuditCanonicalizer;
-use Local\ModelAudit\Contracts\AuditHasher;
-use Local\ModelAudit\Contracts\AuditHashGenerator;
-use Local\ModelAudit\Contracts\AuditPayloadBuilder;
-use Local\ModelAudit\DTO\AuditEntryData;
-use Local\ModelAudit\Models\AuditEntry;
+use Johannesclimacus\ModelAudit\Contracts\AuditCanonicalizer;
+use Johannesclimacus\ModelAudit\Contracts\AuditHasher;
+use Johannesclimacus\ModelAudit\Contracts\AuditHashGenerator;
+use Johannesclimacus\ModelAudit\Contracts\AuditPayloadBuilder;
+use Johannesclimacus\ModelAudit\DTO\AuditEntryData;
+use Johannesclimacus\ModelAudit\Models\AuditEntry;
 
 class DefaultAuditHashGenerator implements AuditHashGenerator
 {

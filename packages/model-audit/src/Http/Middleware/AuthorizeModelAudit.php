@@ -1,6 +1,6 @@
 <?php
 
-namespace Local\ModelAudit\Http\Middleware;
+namespace Johannesclimacus\ModelAudit\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;

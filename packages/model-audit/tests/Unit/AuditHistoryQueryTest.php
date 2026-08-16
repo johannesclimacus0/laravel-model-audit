@@ -1,9 +1,9 @@
 <?php
 
-namespace Local\ModelAudit\Tests\Unit;
+namespace Johannesclimacus\ModelAudit\Tests\Unit;
 
-use Local\ModelAudit\DTO\AuditHistoryQuery;
-use Local\ModelAudit\Tests\TestCase;
+use Johannesclimacus\ModelAudit\DTO\AuditHistoryQuery;
+use Johannesclimacus\ModelAudit\Tests\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 use InvalidArgumentException;
 
