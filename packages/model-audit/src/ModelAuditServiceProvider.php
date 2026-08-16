@@ -26,6 +26,7 @@ use Local\ModelAudit\Contracts\AuditHasher;
 use Local\ModelAudit\Contracts\AuditHashGenerator;
 use Local\ModelAudit\Contracts\AuditHistoryReader;
 use Local\ModelAudit\Contracts\AuditLogger;
+use Local\ModelAudit\Contracts\AuditLogReader;
 use Local\ModelAudit\Contracts\AuditPayloadBuilder;
 use Local\ModelAudit\Contracts\AuditRecorder;
 use Local\ModelAudit\Contracts\AuditStatusProvider;
@@ -37,6 +38,7 @@ use Local\ModelAudit\Filtering\DefaultAuditAttributeFilter;
 use Local\ModelAudit\Hashing\DefaultAuditHashGenerator;
 use Local\ModelAudit\Hashing\Sha256AuditHasher;
 use Local\ModelAudit\History\DatabaseAuditHistoryReader;
+use Local\ModelAudit\History\DatabaseAuditLogReader;
 use Local\ModelAudit\Logging\DefaultAuditLogger;
 use Local\ModelAudit\Masking\DefaultAuditValueMasker;
 use Local\ModelAudit\Payloads\DefaultAuditPayloadBuilder;
@@ -88,6 +90,8 @@ class ModelAuditServiceProvider extends ServiceProvider
         $this->app->singleton(AuditStatusProvider::class, DatabaseAuditStatusProvider::class);
 
         $this->app->singleton(AuditHistoryReader::class, DatabaseAuditHistoryReader::class);
+
+        $this->app->singleton(AuditLogReader::class, DatabaseAuditLogReader::class);
     }
 
     public function boot(): void
@@ -95,6 +99,12 @@ class ModelAuditServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'model-audit');
+
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'model-audit');
+
+        if (config('model-audit.ui.enabled', true)) {
+            $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+        }
 
         if ($this->app->runningInConsole()) {
             $this->commands([
@@ -119,5 +129,9 @@ class ModelAuditServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../resources/lang' => lang_path('vendor/model-audit'),
         ], 'model-audit-lang');
+
+        $this->publishes([
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/model-audit'),
+        ], 'model-audit-views');
     }
 }

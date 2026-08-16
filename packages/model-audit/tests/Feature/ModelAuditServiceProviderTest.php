@@ -12,6 +12,7 @@ use Local\ModelAudit\Contracts\AuditChainWriter;
 use Local\ModelAudit\Contracts\AuditHasher;
 use Local\ModelAudit\Contracts\AuditHashGenerator;
 use Local\ModelAudit\Contracts\AuditHistoryReader;
+use Local\ModelAudit\Contracts\AuditLogReader;
 use Local\ModelAudit\Contracts\AuditPayloadBuilder;
 use Local\ModelAudit\Contracts\AuditStatusProvider;
 use Local\ModelAudit\Contracts\IpAddressResolver;
@@ -20,6 +21,7 @@ use Local\ModelAudit\Contracts\UserAgentResolver;
 use Local\ModelAudit\Hashing\DefaultAuditHashGenerator;
 use Local\ModelAudit\Hashing\Sha256AuditHasher;
 use Local\ModelAudit\History\DatabaseAuditHistoryReader;
+use Local\ModelAudit\History\DatabaseAuditLogReader;
 use Local\ModelAudit\Payloads\DefaultAuditPayloadBuilder;
 use Local\ModelAudit\Resolvers\AuthenticatedActorResolver;
 use Local\ModelAudit\Resolvers\RequestIpAddressResolver;
@@ -32,6 +34,14 @@ use Local\ModelAudit\Verification\DatabaseAuditChainVerifier;
 
 class ModelAuditServiceProviderTest extends TestCase
 {
+    public function test_it_registers_the_database_audit_log_reader(): void
+    {
+        $reader = $this->app->make(AuditLogReader::class);
+
+        $this->assertInstanceOf(DatabaseAuditLogReader::class, $reader);
+        $this->assertSame($reader, $this->app->make(AuditLogReader::class));
+    }
+
     public function test_it_registers_the_database_audit_history_reader(): void
     {
         $reader = $this->app->make(AuditHistoryReader::class);
