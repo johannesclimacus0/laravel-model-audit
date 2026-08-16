@@ -5,7 +5,7 @@ use Local\ModelAudit\Http\Controllers\AuditController;
 use Local\ModelAudit\Http\Middleware\AuthorizeModelAudit;
 
 $middleware = array_merge(
-    (array) config('model-audit.ui.middleware', ['web', 'auth']),
+    (array) config('model-audit.ui.middleware', ['web']),
     [AuthorizeModelAudit::class],
 );
 

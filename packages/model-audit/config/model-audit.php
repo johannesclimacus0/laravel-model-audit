@@ -24,7 +24,6 @@ return [
 
         'middleware' => [
             'web',
-            'auth',
         ],
 
         'ability' => 'viewModelAudit',
